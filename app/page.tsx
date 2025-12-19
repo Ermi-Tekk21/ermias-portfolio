@@ -163,13 +163,12 @@ export default function Portfolio() {
                   Ermias Teklemarkos
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-medium">
-                  Software Engineer | Full-Stack Developer | Junior ML Engineer
+                  Software Engineer | Backend Developer | Full-Stack Skills | Exploring Data Science
                 </p>
               </div>
 
               <p className="text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground max-w-xl mx-auto lg:mx-0">
-                BSc Software Engineering graduate with expertise in full-stack development, MERN stack, and machine
-                learning. Passionate about building scalable applications and exploring AI technologies.
+                Backend-focused Full-Stack Software Engineer with strong experience designing and building scalable server-side logic, high-performance APIs, and reliable database structures.
               </p>
 
               <div className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4">
@@ -250,8 +249,12 @@ export default function Portfolio() {
               About Me
             </h2>
             <p className="text-muted-foreground max-w-3xl mx-auto text-sm sm:text-base md:text-lg">
-              Passionate software engineer with a strong foundation in full-stack development and emerging expertise in
-              machine learning.
+              Backend-focused Full-Stack Software Engineer with strong experience designing and building scalable server-side logic, high-performance APIs, and reliable database structures.
+Proficient in Node.js (NestJS, Express) and skilled in architecting microservices supported by event-driven systems using Kafka and RabbitMQ.
+Hands-on experience with PostgreSQL, MySQL, MongoDB, and Redis, along with ORMs and tools such as TypeORM, Sequelize, and Prisma for efficient data access.
+On the frontend, experienced with Next.js, Tailwind CSS, Redux Toolkit, and Shadcn UI, enabling the development of fast, modern, and responsive interfaces.
+Comfortable working with Docker, cloud services like AWS EC2 and S3, and best practices for secure, maintainable deployments.
+Currently expanding skills in machine learning, data visualization, and data analysis, driven by a passion for building impactful, scalable, and innovative software solutions.
             </p>
           </div>
 
@@ -294,19 +297,19 @@ export default function Portfolio() {
                 <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                    Full-Stack Development (MERN Stack)
+                    Full-Stack Development
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                    Backend Development & API Design
+                    Backend Development & API Design -  (Nodejs(Express, Nestjs), FastAPI, Postgresql, mongodb, typeorm, Micoroservice and more)
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                    Machine Learning & AI
+                    Exploring and Leraning Data Scince 
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                    AWS Cloud Infrastructure
+                    Cpanel and AWS Cloud Infrastructure
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
@@ -329,6 +332,34 @@ export default function Portfolio() {
           </div>
 
           <div className="space-y-6 sm:space-y-8">
+<Card className="border-2 hover:border-primary/20 transition-all hover:shadow-lg">
+              <CardHeader>
+                <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="p-2 sm:p-3 bg-primary/10 rounded-xl">
+                      <Briefcase className="w-5 sm:w-6 h-5 sm:h-6 text-primary" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-lg sm:text-xl">Back-End Developer</CardTitle>
+                      <CardDescription className="text-sm sm:text-base">Lersha - Green Agro Solution PLC</CardDescription>
+                    </div>
+                  </div>
+                  <Badge variant="outline" className="bg-primary/5 text-primary border-primary/20 text-xs sm:text-sm">
+                    Dec 2024 – Feb 2025
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full mt-1 sm:mt-2"></div>
+                    Build and maintain server-side logic, databases, and APIs for both new and existing projects, as well as internal software. I leverage technologies such as Node.js, NestJS, TypeORM, and Sequelize, working with both SQL and MongoDB databases. My expertise includes implementing microservices architecture to enhance scalability and performance.
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            
             <Card className="border-2 hover:border-primary/20 transition-all hover:shadow-lg">
               <CardHeader>
                 <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
