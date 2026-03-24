@@ -92,3 +92,22 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+.wave-bar {
+  @apply w-[3px] bg-yellow-500 mx-[1px] rounded-full origin-bottom;
+  animation: wave 1s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
+
+.music-wiggle-active {
+  animation: wiggle 0.5s ease-in-out infinite;
+}

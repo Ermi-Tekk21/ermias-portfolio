@@ -1,3 +1,6 @@
+'use client'
+
+import { useState, useRef, useEffect } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -19,11 +22,45 @@ import {
   Download,
   Lock,
   Send,
+  Play,
+  Square,
+  Music,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
 export default function Portfolio() {
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [showStickyPlayer, setShowStickyPlayer] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+
+  useEffect(() => {
+    setMounted(true)
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowStickyPlayer(true)
+      } else {
+        setShowStickyPlayer(false)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const toggleMusic = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause()
+        audioRef.current.currentTime = 0
+      } else {
+        audioRef.current.play()
+      }
+      setIsPlaying(!isPlaying)
+    }
+  }
+
   const skills = {
     "Programming Languages": ["JavaScript", "TypeScript", "Python", "Go"],
     "Software Architecture": ["Microservices", "Monolithic", "Client-Server"],
@@ -300,6 +337,11 @@ export default function Portfolio() {
                     Join "Lets Share"
                   </Link>
                 </Button>
+                <audio
+                  ref={audioRef}
+                  src="/Chill Pulse - Office Jam (freetouse.com).mp3"
+                  onEnded={() => setIsPlaying(false)}
+                />
               </div>
 
               {/* Social */}
@@ -353,6 +395,34 @@ export default function Portfolio() {
                   height={900}
                   className="relative rounded-full aspect-square object-cover shadow-xl sm:shadow-2xl border-2 sm:border-4 border-white/10 group-hover:scale-105 transition-transform duration-300 w-full"
                 />
+
+                {/* Music Overlay */}
+                {mounted && (
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 px-4 py-2 bg-black/60 backdrop-blur-md rounded-full border border-white/10 shadow-lg z-20">
+                    <button
+                      onClick={toggleMusic}
+                      className="p-1.5 bg-yellow-500 rounded-full hover:bg-yellow-400 transition-colors text-black flex items-center gap-1.5"
+                      title={isPlaying ? "Stop Music" : "Play Music"}
+                    >
+                      <Music className={`w-3.5 h-3.5 ${isPlaying ? 'music-wiggle-active' : ''}`} />
+                      {isPlaying ? <Square className="w-3.5 h-3.5 fill-current" /> : <Play className="w-3.5 h-3.5 fill-current" />}
+                    </button>
+
+                    <div className="flex items-end h-6 gap-0.5">
+                      {[0.1, 0.3, 0.2, 0.4, 0.15].map((delay, i) => (
+                        <div
+                          key={i}
+                          className="wave-bar"
+                          style={{
+                            animationPlayState: isPlaying ? 'running' : 'paused',
+                            animationDelay: `${delay}s`,
+                            height: `${[14, 18, 15, 20, 13][i]}px`
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -1033,6 +1103,44 @@ export default function Portfolio() {
         </div>
 
       </section>
+
+      {/* Sticky Music Player */}
+      {mounted && (
+        <div
+          className={`fixed bottom-6 right-6 z-50 transition-all duration-500 transform ${
+            showStickyPlayer ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none"
+          }`}
+        >
+          <div className="flex items-center gap-3 px-4 py-3 bg-black/80 backdrop-blur-xl rounded-2xl border border-yellow-500/20 shadow-[0_0_30px_rgba(234,179,8,0.15)] group">
+            <div className="flex flex-col">
+              <span className="text-[10px] font-mono text-yellow-500/70 uppercase tracking-widest leading-none mb-1">Now Playing</span>
+              <span className="text-xs font-mono text-white font-medium truncate max-w-[120px]">Classical - Chill Pulse</span>
+            </div>
+
+            <div className="flex items-end h-5 gap-0.5 mx-2">
+              {[0.1, 0.3, 0.2, 0.4, 0.15].map((delay, i) => (
+                <div
+                  key={i}
+                  className="wave-bar w-[2px]"
+                  style={{
+                    animationPlayState: isPlaying ? 'running' : 'paused',
+                    animationDelay: `${delay}s`,
+                    height: `${[12, 16, 14, 18, 11][i]}px`
+                  }}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={toggleMusic}
+              className="p-2 bg-yellow-500 rounded-xl hover:bg-yellow-400 transition-all hover:scale-105 active:scale-95 text-black shadow-lg flex items-center gap-1.5"
+            >
+              <Music className={`w-4 h-4 ${isPlaying ? 'music-wiggle-active' : ''}`} />
+              {isPlaying ? <Square className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current" />}
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
