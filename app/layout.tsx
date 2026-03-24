@@ -11,14 +11,14 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
   title: "Ermias Teklemarkos - Portfolio",
-  description: "Software Engineer | Full-Stack Developer | Junior ML Engineer",
+  description: "Software Engineer | Full-Stack Developer | Exploring Data Science",
   generator: "v0.dev",
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
     title: "Ermias Teklemarkos - Portfolio",
-    description: "Software Engineer | Full-Stack Developer | Junior ML Engineer",
+    description: "Software Engineer | Full-Stack Developer | Exploring Data Science",
     url: "https://ermias-teklemarkos-portfolio.vercel.app",
     siteName: "Ermias Teklemarkos Portfolio",
     images: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Ermias Teklemarkos - Portfolio",
-    description: "Software Engineer | Full-Stack Developer | Junior ML Engineer",
+    description: "Software Engineer | Full-Stack Developer | Exploring Data Science",
     images: ["/og-image.jpg"],
   },
 }
@@ -51,69 +51,59 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
           <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b">
             <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
+              {/* Logo / Brand */}
               <Link
                 href="/"
-                className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+                className="text-2xl sm:text-3xl font-extrabold tracking-wide bg-gradient-to-br from-blue-700 via-blue-900 to-indigo-900 text-transparent bg-clip-text drop-shadow-lg"
               >
                 Ermias Teklemarkos
               </Link>
+
+              {/* Navigation Links */}
               <ul className="hidden md:flex space-x-6">
-                <li>
-                  <Link href="#about" className="hover:text-primary transition-colors">
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#skills" className="hover:text-primary transition-colors">
-                    Skills
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#projects" className="hover:text-primary transition-colors">
-                    Projects
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#experience" className="hover:text-primary transition-colors">
-                    Experience
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#education" className="hover:text-primary transition-colors">
-                    Education
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#contact" className="hover:text-primary transition-colors">
-                    Contact
-                  </Link>
-                </li>
+                {[
+                  { href: "#about", label: "About" },
+                  { href: "#skills", label: "Skills" },
+                  { href: "#projects", label: "Projects" },
+                  { href: "#experience", label: "Experience" },
+                  { href: "#education", label: "Education" },
+                  { href: "#contact", label: "Contact" },
+                ].map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="relative text-gray-800 dark:text-gray-200 font-semibold text-sm sm:text-base 
+                     hover:text-blue-400 hover:after:scale-x-100 after:content-[''] after:absolute after:-bottom-1 after:left-0 
+                     after:w-full after:h-0.5 after:bg-blue-400 after:origin-left after:scale-x-0 after:transition-transform duration-300"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
-              <ThemeToggle />
             </nav>
           </header>
           <main className="flex-grow">{children}</main>
-          <footer className="py-8 px-4 border-t bg-muted/30">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
-              <p className="text-sm text-muted-foreground">
+          <footer className="container text-gray-400 font-mono max-w-2xl mx-auto mb-10 mx-auto pt-10 flex flex-col md:flex-row justify-between">
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-20">
+              {/* Copyright */}
+              <p className="text-sm sm:text-base text-sm tracking-wide">
                 © {new Date().getFullYear()} Ermias Teklemarkos. All rights reserved.
               </p>
-              <div className="flex space-x-4 mt-4 md:mt-0">
-                <Link href="https://github.com/ermi-tekk21" className="hover:text-primary transition-colors text-sm">
-                  GitHub
-                </Link>
-                <Link
-                  href="https://linkedin.com/in/ermias-tekilemarkos"
-                  className="hover:text-primary transition-colors text-sm"
-                >
-                  LinkedIn
-                </Link>
-                <Link
-                  href="mailto:ermiasteklemarkos@gmail.com"
-                  className="hover:text-primary transition-colors text-sm"
-                >
-                  Email
-                </Link>
+
+              {/* Social Links */}
+              <div className="flex space-x-6 mt-4 md:mt-0">
+                {[
+                  { href: "https://linkedin.com/in/ermias-tekilemarkos", label: "LinkedIn" }
+                ].map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="hover:bg-clip-text text-sm sm:text-base hover:text-transparent hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-700 transition-all px-2 py-1 rounded"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
               </div>
             </div>
           </footer>
