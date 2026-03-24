@@ -293,7 +293,7 @@ export default function Portfolio() {
                   className="border border-blue-400/30 text-blue-400 hover:bg-blue-400/10 text-xs sm:text-sm font-mono"
                 >
                   <Link
-                    href="https://t.me/Tek_jeremy_x03"
+                    href="https://t.me/lets_share_tech"
                     target="_blank"
                   >
                     <Send className="w-3 sm:w-4 h-3 sm:h-4 mr-1 sm:mr-2" />
@@ -330,7 +330,7 @@ export default function Portfolio() {
                 </Link>
 
                 <Link
-                  href="https://t.me/Tek_jeremy_x03"
+                  href="https://t.me/lets_share_tech"
                   target="_blank"
                   className="flex items-center gap-2 text-xs sm:text-sm text-gray-500 hover:text-blue-400 transition-colors font-mono"
                 >
