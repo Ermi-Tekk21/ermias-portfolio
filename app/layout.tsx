@@ -46,10 +46,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="scroll-pt-20">
       <body className={`${inter.className} flex flex-col min-h-screen`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
-          <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b">
+          <header className="fixed top-0 left-0 right-0 w-full z-50 bg-[#080e1f]/80 backdrop-blur-md border-b border-blue-900/30">
             <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
               {/* Logo / Brand */}
               <Link
@@ -84,27 +84,68 @@ export default function RootLayout({
             </nav>
           </header>
           <main className="flex-grow">{children}</main>
-          <footer className="container text-gray-400 font-mono max-w-2xl mx-auto mb-10 mx-auto pt-10 flex flex-col md:flex-row justify-between">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-20">
-              {/* Copyright */}
-              <p className="text-sm sm:text-base text-sm tracking-wide">
-                © {new Date().getFullYear()} Ermias Teklemarkos. All rights reserved.
-              </p>
+          <footer className="w-full bg-[#080e1f] border-t border-blue-900/30 text-gray-400 font-mono">
+            <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
 
-              {/* Social Links */}
-              <div className="flex space-x-6 mt-4 md:mt-0">
-                {[
-                  { href: "https://linkedin.com/in/ermias-tekilemarkos", label: "LinkedIn" }
-                ].map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="hover:bg-clip-text text-sm sm:text-base hover:text-transparent hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-700 transition-all px-2 py-1 rounded"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+              {/* Top row: brand + nav links */}
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-4 mb-8">
+
+                {/* Brand */}
+                <Link
+                  href="/"
+                  className="text-lg sm:text-xl font-extrabold tracking-wide bg-gradient-to-br from-blue-700 via-blue-900 to-indigo-900 text-transparent bg-clip-text drop-shadow-lg"
+                >
+                  Ermias Teklemarkos
+                </Link>
+
+                {/* Nav links - wrap nicely on mobile */}
+                <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs sm:text-sm">
+                  {[
+                    { href: "#about", label: "About" },
+                    { href: "#skills", label: "Skills" },
+                    { href: "#projects", label: "Projects" },
+                    { href: "#experience", label: "Experience" },
+                    { href: "#education", label: "Education" },
+                    { href: "#contact", label: "Contact" },
+                  ].map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="hover:text-blue-400 transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
+
+              {/* Divider */}
+              <div className="border-t border-blue-900/20 mb-6" />
+
+              {/* Bottom row: copyright + social */}
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs sm:text-sm">
+                <p className="tracking-wide text-center sm:text-left">
+                  © {new Date().getFullYear()} Ermias Teklemarkos. All rights reserved.
+                </p>
+
+                <div className="flex gap-4">
+                  {[
+                    { href: "https://linkedin.com/in/ermias-tekilemarkos", label: "LinkedIn" },
+                    { href: "https://github.com/ermi-tekk21", label: "GitHub" },
+                    { href: "mailto:ermiasteklemarkos@gmail.com", label: "Email" },
+                  ].map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="hover:text-blue-400 transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
             </div>
           </footer>
         </ThemeProvider>

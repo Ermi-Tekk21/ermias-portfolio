@@ -1,7 +1,6 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
 import {
   Github,
   Linkedin,
@@ -15,7 +14,6 @@ import {
   Briefcase,
   Award,
   ExternalLink,
-  Star,
   Zap,
   Rocket,
   Download,
@@ -71,7 +69,7 @@ export default function Portfolio() {
     {
       title: "YC-Directory",
       description:
-        "Project delivering personalized meal recommendations based on Ethiopian cuisine using machine learning models (Random Forest Regressor) with 80% test coverage.",
+        "A startup directory platform where entrepreneurs can submit, discover, and explore startups. Built as a Y Combinator-inspired clone with real-time content management, GitHub authentication, and dynamic startup profiles.",
       tech: ["Next.js", "Sanity", "Auth.js", "Tailwind CSS", "ShadCN UI"],
       liveUrl: "https://yc-directory-clone-by-ermi.vercel.app/",
       category: "Web App",
@@ -209,7 +207,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-background scroll-smooth">
       {/* Hero Section */}
-      <section className="relative h-screen sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
+      <section className="relative min-h-[100dvh] flex items-center justify-center py-24 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
 
         {/* Background Effects */}
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -218,8 +216,7 @@ export default function Portfolio() {
         <div className="absolute top-10 left-10 w-40 sm:w-56 md:w-72 h-40 sm:h-56 md:h-72 bg-green-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 right-10 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="flex  lg:flex-row lg:gap-16 items-center">
+        <div className="flex flex-col-reverse lg:flex-row gap-12 lg:gap-16 items-center justify-between max-w-7xl mx-auto relative z-10 w-full">
 
             {/* LEFT */}
             <div className="space-y-6 text-center lg:text-left">
@@ -231,7 +228,7 @@ export default function Portfolio() {
               </div>
 
               {/* Name */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 font-mono">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-blue-700 via-blue-900 to-indigo-900 sm:bg-gradient-to-r sm:from-green-400 sm:via-blue-500 sm:to-purple-500 font-mono drop-shadow-lg sm:drop-shadow-none">
                 {"<Ermi_Tek />"}
               </h1>
 
@@ -242,7 +239,7 @@ export default function Portfolio() {
 
               {/* Tech Stack */}
               <p className="text-xs sm:text-sm text-green-500 font-mono opacity-80">
-                {"-- Node.js(NestJS & ExpressJS) | FastAPI | RaabbitMQ and Kafka"}<br />
+                {"-- Node.js(NestJS & ExpressJS) | FastAPI | RabbitMQ and Kafka"}<br />
                 {"-- PostgreSQL | Docker | React | Next.js"}
               </p>
 
@@ -319,7 +316,7 @@ export default function Portfolio() {
             </div>
 
             {/* RIGHT IMAGE */}
-            <div className="flex justify-center lg:justify-end w-full lg:ml-32 lg:w-auto">
+            <div className="flex justify-center lg:justify-end w-full lg:w-auto">
               <div className="relative group w-48 sm:w-64 md:w-80 lg:w-96">
 
                 <div className="absolute -inset-2 sm:-inset-3 md:-inset-4 bg-gradient-to-r from-green-500 to-purple-600 rounded-full blur-xl sm:blur-2xl opacity-25 group-hover:opacity-40 transition-opacity"></div>
@@ -334,12 +331,11 @@ export default function Portfolio() {
               </div>
             </div>
 
-          </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
+      <section id="about" className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#080e1f] overflow-hidden">
 
         {/* Background */}
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -503,7 +499,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="education" className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
+      <section id="education" className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#080e1f] overflow-hidden">
 
         {/* Background */}
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -783,7 +779,7 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-black/80 backdrop-blur">
+      <section id="projects" className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#080e1f]">
 
         <div className="max-w-7xl mx-auto">
 
@@ -813,11 +809,11 @@ export default function Portfolio() {
                   className="group border border-blue-500/20 bg-black/60 backdrop-blur hover:border-blue-400/40 hover:shadow-xl hover:-translate-y-2 transition-all"
                 >
                   <CardHeader>
-                    <CardTitle className="flex items-center justify-between text-base sm:text-lg font-mono text-white">
+                    <CardTitle className="flex items-center justify-between gap-2 text-base sm:text-lg font-mono text-white">
                       <span className="group-hover:text-blue-400 transition-colors">{project.title}</span>
-                      <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 text-xs sm:text-sm">
+                      <span className="shrink-0 text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30 shadow-[0_0_8px_rgba(59,130,246,0.2)] tracking-wide uppercase">
                         {project.category}
-                      </Badge>
+                      </span>
                     </CardTitle>
                     <CardDescription className="text-gray-400 text-xs sm:text-sm leading-relaxed font-mono">
                       {project.description}
@@ -833,26 +829,26 @@ export default function Portfolio() {
                       ))}
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                    <div className="flex flex-col gap-2">
                       {project.liveUrl && (
-                        <Button asChild size="sm" className="flex-1 text-xs sm:text-sm font-mono">
+                        <Button asChild size="sm" className="w-full text-sm font-mono py-2">
                           <Link href={project.liveUrl} target="_blank">
-                            <ExternalLink className="w-3 h-3 mr-1" />
+                            <ExternalLink className="w-4 h-4 mr-2" />
                             Live Demo
                           </Link>
                         </Button>
                       )}
                       {project.githubUrl && (
-                        <Button asChild variant="outline" size="sm" className="flex-1 text-xs sm:text-sm font-mono">
+                        <Button asChild variant="outline" size="sm" className="w-full text-sm font-mono py-2">
                           <Link href={project.githubUrl} target="_blank">
-                            <Github className="w-3 h-3 mr-1" />
+                            <Github className="w-4 h-4 mr-2" />
                             Code
                           </Link>
                         </Button>
                       )}
                       {project.internalUse && (
-                        <Button variant="secondary" size="sm" className="flex-1 text-xs sm:text-sm font-mono cursor-default hover:bg-secondary">
-                          <Lock className="w-3 h-3 mr-1" />
+                        <Button variant="secondary" size="sm" className="w-full text-sm font-mono py-2 cursor-default hover:bg-secondary">
+                          <Lock className="w-4 h-4 mr-2" />
                           Company Internal
                         </Button>
                       )}
@@ -879,11 +875,11 @@ export default function Portfolio() {
                   className="group border border-green-500/20 bg-black/60 backdrop-blur hover:border-green-400/40 hover:shadow-xl hover:-translate-y-2 transition-all"
                 >
                   <CardHeader>
-                    <CardTitle className="flex items-center justify-between text-base sm:text-lg font-mono text-white">
+                    <CardTitle className="flex items-center justify-between gap-2 text-base sm:text-lg font-mono text-white">
                       <span className="group-hover:text-green-400 transition-colors">{project.title}</span>
-                      <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 text-xs sm:text-sm">
+                      <span className="shrink-0 text-xs font-semibold px-2.5 py-1 rounded-full bg-green-500/10 text-green-400 border border-green-500/30 shadow-[0_0_8px_rgba(34,197,94,0.2)] tracking-wide uppercase">
                         {project.category}
-                      </Badge>
+                      </span>
                     </CardTitle>
                     <CardDescription className="text-gray-400 text-xs sm:text-sm leading-relaxed font-mono">
                       {project.description}
@@ -899,26 +895,26 @@ export default function Portfolio() {
                       ))}
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                    <div className="flex flex-col gap-2">
                       {project.liveUrl && (
-                        <Button asChild size="sm" className="flex-1 text-xs sm:text-sm font-mono">
+                        <Button asChild size="sm" className="w-full text-sm font-mono py-2">
                           <Link href={project.liveUrl} target="_blank">
-                            <ExternalLink className="w-3 h-3 mr-1" />
+                            <ExternalLink className="w-4 h-4 mr-2" />
                             Live Demo
                           </Link>
                         </Button>
                       )}
                       {project.githubUrl && (
-                        <Button asChild variant="outline" size="sm" className="flex-1 text-xs sm:text-sm font-mono">
+                        <Button asChild variant="outline" size="sm" className="w-full text-sm font-mono py-2">
                           <Link href={project.githubUrl} target="_blank">
-                            <Github className="w-3 h-3 mr-1" />
+                            <Github className="w-4 h-4 mr-2" />
                             Code
                           </Link>
                         </Button>
                       )}
                       {project.internalUse && (
-                        <Button variant="secondary" size="sm" className="flex-1 text-xs sm:text-sm font-mono cursor-default hover:bg-secondary">
-                          <Lock className="w-3 h-3 mr-1" />
+                        <Button variant="secondary" size="sm" className="w-full text-sm font-mono py-2 cursor-default hover:bg-secondary">
+                          <Lock className="w-4 h-4 mr-2" />
                           Company Internal
                         </Button>
                       )}
@@ -945,11 +941,11 @@ export default function Portfolio() {
                   className="group border border-pink-500/20 bg-black/60 backdrop-blur hover:border-pink-400/40 hover:shadow-xl hover:-translate-y-2 transition-all"
                 >
                   <CardHeader>
-                    <CardTitle className="flex items-center justify-between text-base sm:text-lg font-mono text-white">
+                    <CardTitle className="flex items-center justify-between gap-2 text-base sm:text-lg font-mono text-white">
                       <span className="group-hover:text-pink-400 transition-colors">{project.title}</span>
-                      <Badge variant="outline" className="bg-pink-50 text-pink-700 border-pink-200 text-xs sm:text-sm">
+                      <span className="shrink-0 text-xs font-semibold px-2.5 py-1 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/30 shadow-[0_0_8px_rgba(236,72,153,0.2)] tracking-wide uppercase">
                         {project.category}
-                      </Badge>
+                      </span>
                     </CardTitle>
                     <CardDescription className="text-gray-400 text-xs sm:text-sm leading-relaxed font-mono">
                       {project.description}
@@ -979,7 +975,7 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-black text-center">
+      <section id="contact" className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#080e1f] text-center">
 
         <h2 className="text-3xl sm:text-4xl font-bold font-mono text-green-400 mb-6">
           {"<Let's_Build />"}
