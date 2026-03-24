@@ -330,7 +330,7 @@ export default function Portfolio() {
                 </Link>
 
                 <Link
-                  href="https://t.me/lets_share_tech"
+                  href="https://t.me/Tek_jeremy_x03"
                   target="_blank"
                   className="flex items-center gap-2 text-xs sm:text-sm text-gray-500 hover:text-blue-400 transition-colors font-mono"
                 >
