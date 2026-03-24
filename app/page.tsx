@@ -18,6 +18,7 @@ import {
   Rocket,
   Download,
   Lock,
+  Send,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -284,6 +285,21 @@ export default function Portfolio() {
                     Resume
                   </Link>
                 </Button>
+
+                <Button
+                  variant="outline"
+                  size="sm"
+                  asChild
+                  className="border border-blue-400/30 text-blue-400 hover:bg-blue-400/10 text-xs sm:text-sm font-mono"
+                >
+                  <Link
+                    href="https://t.me/Tek_jeremy_x03"
+                    target="_blank"
+                  >
+                    <Send className="w-3 sm:w-4 h-3 sm:h-4 mr-1 sm:mr-2" />
+                    Join "Lets Share"
+                  </Link>
+                </Button>
               </div>
 
               {/* Social */}
@@ -311,6 +327,15 @@ export default function Portfolio() {
                 >
                   <Github className="w-3 sm:w-4 h-3 sm:h-4" />
                   GitHub
+                </Link>
+
+                <Link
+                  href="https://t.me/Tek_jeremy_x03"
+                  target="_blank"
+                  className="flex items-center gap-2 text-xs sm:text-sm text-gray-500 hover:text-blue-400 transition-colors font-mono"
+                >
+                  <Send className="w-3 sm:w-4 h-3 sm:h-4" />
+                  Telegram
                 </Link>
               </div>
             </div>
