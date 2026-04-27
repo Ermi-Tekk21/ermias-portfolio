@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Navbar } from "@/components/navbar"
 import { Inter } from "next/font/google"
 import Link from "next/link"
 
@@ -46,44 +47,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-pt-20">
-      <body className={`${inter.className} flex flex-col min-h-screen`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} forcedTheme="dark" disableTransitionOnChange={false}>
-          <header className="fixed top-0 left-0 right-0 w-full z-50 bg-[#080e1f]/80 backdrop-blur-md border-b border-blue-900/30">
-            <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-              {/* Logo / Brand */}
-              <Link
-                href="/"
-                className="text-2xl sm:text-3xl font-extrabold tracking-wide bg-gradient-to-br from-blue-700 via-blue-900 to-indigo-900 text-transparent bg-clip-text drop-shadow-lg"
-              >
-                Ermias Teklemarkos
-              </Link>
-
-              {/* Navigation Links */}
-              <ul className="hidden md:flex space-x-6">
-                {[
-                  { href: "#about", label: "About" },
-                  { href: "#skills", label: "Skills" },
-                  { href: "#projects", label: "Projects" },
-                  { href: "#experience", label: "Experience" },
-                  { href: "#education", label: "Education" },
-                  { href: "#contact", label: "Contact" },
-                ].map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="relative text-gray-800 dark:text-gray-200 font-semibold text-sm sm:text-base 
-                     hover:text-blue-400 hover:after:scale-x-100 after:content-[''] after:absolute after:-bottom-1 after:left-0 
-                     after:w-full after:h-0.5 after:bg-blue-400 after:origin-left after:scale-x-0 after:transition-transform duration-300"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </header>
+      <body className={`${inter.className} flex flex-col min-h-screen bg-white dark:bg-[#080e1f] text-gray-900 dark:text-gray-100 transition-colors duration-300`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} disableTransitionOnChange={false}>
+          <Navbar />
           <main className="flex-grow">{children}</main>
-          <footer className="w-full bg-[#080e1f] border-t border-blue-900/30 text-gray-400 font-mono">
+          <footer className="w-full bg-gray-50 dark:bg-[#080e1f] border-t border-gray-200 dark:border-blue-900/30 text-gray-500 dark:text-gray-400 font-mono transition-colors duration-300">
             <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
 
               {/* Top row: brand + nav links */}
@@ -137,7 +105,7 @@ export default function RootLayout({
                     <Link
                       key={link.href}
                       href={link.href}
-                      className="hover:text-blue-400 transition-colors"
+                      className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                     >
                       {link.label}
                     </Link>
