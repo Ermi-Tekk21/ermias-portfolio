@@ -49,7 +49,7 @@ export default function Portfolio() {
         audioRef.current.pause()
         audioRef.current.currentTime = 0
       } else {
-        audioRef.current.play().catch(() => { })
+        audioRef.current.play().catch(() => {})
       }
       setIsPlaying(!isPlaying)
     }
@@ -368,7 +368,7 @@ export default function Portfolio() {
   ]
 
   return (
-    <div className="relative min-h-screen px-3 sm:px-6 md:px-8">
+    <div className="relative min-h-screen px-2.5 xs:px-4 sm:px-6 md:px-8">
       {/* Background audio element */}
       <audio
         ref={audioRef}
@@ -377,14 +377,15 @@ export default function Portfolio() {
       />
 
       {/* Main Single-Card Frame inspired by BRIX Templates Simple Portfolio */}
-      <div className="max-w-4xl lg:max-w-5xl mx-auto my-4 sm:my-8 bg-white dark:bg-[#151619] rounded-[24px] sm:rounded-[32px] border border-neutral-200/90 dark:border-neutral-800 shadow-[0_2px_24px_rgba(0,0,0,0.04)] dark:shadow-none p-6 sm:p-10 md:p-14 space-y-14 sm:space-y-16">
+      <div className="max-w-4xl lg:max-w-5xl mx-auto my-2 xs:my-4 sm:my-6 md:my-8 bg-white dark:bg-[#151619] rounded-2xl sm:rounded-3xl md:rounded-[32px] border border-neutral-200/90 dark:border-neutral-800 shadow-[0_2px_24px_rgba(0,0,0,0.04)] dark:shadow-none p-4 xs:p-6 sm:p-8 md:p-12 lg:p-14 space-y-10 sm:space-y-14 md:space-y-16 overflow-hidden">
 
-        {/* HERO SECTION — Clean, Human-made, No gradients */}
+        {/* HERO SECTION — Clean, Human-made, Fully Responsive */}
         <section id="hero" className="pt-2 sm:pt-4">
-          <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-8 md:gap-10">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-5 sm:gap-7 md:gap-9">
+            
             {/* Profile Avatar */}
             <div className="relative shrink-0">
-              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border border-neutral-200 dark:border-neutral-700 shadow-sm bg-neutral-100 dark:bg-neutral-800">
+              <div className="w-24 h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border border-neutral-200 dark:border-neutral-700 shadow-sm bg-neutral-100 dark:bg-neutral-800">
                 <Image
                   src="/profile.png"
                   alt="Ermias Teklemarkos"
@@ -403,8 +404,8 @@ export default function Portfolio() {
             </div>
 
             {/* Greeting & Headline */}
-            <div className="flex-1 space-y-3">
-              <div className="flex flex-wrap items-center gap-2 text-xs font-medium text-neutral-500 dark:text-neutral-400">
+            <div className="flex-1 space-y-3 min-w-0">
+              <div className="flex flex-wrap justify-center sm:justify-start items-center gap-2 text-xs font-medium text-neutral-500 dark:text-neutral-400">
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                   Available for new roles
@@ -415,37 +416,37 @@ export default function Portfolio() {
                 </span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 leading-[1.15]">
+              <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 leading-[1.2]">
                 Hello, I am Ermias.
-                <span className="block text-neutral-600 dark:text-neutral-400 font-medium text-2xl sm:text-3xl md:text-4xl mt-1">
+                <span className="block text-neutral-600 dark:text-neutral-400 font-medium text-lg xs:text-xl sm:text-2xl md:text-3xl mt-1">
                   A Software Engineer.
                 </span>
               </h1>
 
-              <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base leading-relaxed max-w-2xl">
-                Backend-focused full-stack software engineer with 2+ years of professional experience building fintech and agritech microservices and RESTful APIs with Node.js and FastAPI.
+              <p className="text-xs xs:text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-2xl mx-auto sm:mx-0">
+                Backend-focused full-stack software engineer with 2+ years of professional experience building fintech and agritech microservices and RESTful APIs with Node.js and FastAPI. Currently developing payment services for Dashen Bank’s Super App (2M+ subscribers).
               </p>
 
-              {/* Action Buttons — Clean, Human-made, No gradients */}
-              <div className="flex flex-wrap items-center gap-3 pt-2">
-                <Button asChild size="default" className="rounded-full">
+              {/* Action Buttons — Touch-Friendly & Clean */}
+              <div className="flex flex-wrap justify-center sm:justify-start items-center gap-2 xs:gap-3 pt-2">
+                <Button asChild size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-4 xs:px-5">
                   <Link href="#contact">
                     Contact me
-                    <ArrowUpRight className="w-4 h-4 ml-1" />
+                    <ArrowUpRight className="w-3.5 h-3.5 xs:w-4 xs:h-4 ml-1" />
                   </Link>
                 </Button>
 
-                <Button asChild variant="outline" size="default" className="rounded-full">
+                <Button asChild variant="outline" size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-4 xs:px-5">
                   <Link href={resumeUrl} target="_blank" rel="noopener noreferrer">
                     Resume
-                    <ArrowUpRight className="w-4 h-4 ml-1" />
+                    <ArrowUpRight className="w-3.5 h-3.5 xs:w-4 xs:h-4 ml-1" />
                   </Link>
                 </Button>
 
-                <Button asChild variant="ghost" size="default" className="rounded-full">
+                <Button asChild variant="ghost" size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-3.5 xs:px-4">
                   <Link href="#projects">
                     View work
-                    <ArrowUpRight className="w-4 h-4 ml-1" />
+                    <ArrowUpRight className="w-3.5 h-3.5 xs:w-4 xs:h-4 ml-1" />
                   </Link>
                 </Button>
 
@@ -453,11 +454,11 @@ export default function Portfolio() {
                 {mounted && (
                   <button
                     onClick={toggleMusic}
-                    className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-neutral-200 dark:border-neutral-800 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors ml-auto sm:ml-0"
+                    className="inline-flex items-center gap-1.5 xs:gap-2 px-3 py-1.5 xs:py-2 rounded-full border border-neutral-200 dark:border-neutral-800 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
                     title={isPlaying ? "Pause music" : "Play subtle background music"}
                   >
                     <Music className={`w-3.5 h-3.5 ${isPlaying ? "music-wiggle-active text-neutral-900 dark:text-white" : ""}`} />
-                    <span className="hidden sm:inline">{isPlaying ? "Pause music" : "Office Jam"}</span>
+                    <span className="hidden xs:inline">{isPlaying ? "Pause" : "Office Jam"}</span>
                     {isPlaying ? <Square className="w-3 h-3 fill-current" /> : <Play className="w-3 h-3 fill-current" />}
                     {isPlaying && (
                       <div className="flex items-end h-3 gap-0.5">
@@ -471,7 +472,7 @@ export default function Portfolio() {
               </div>
 
               {/* Social Quick Links */}
-              <div className="flex items-center gap-4 pt-1 text-xs text-neutral-500 dark:text-neutral-400">
+              <div className="flex flex-wrap justify-center sm:justify-start items-center gap-3 xs:gap-4 pt-1 text-xs text-neutral-500 dark:text-neutral-400">
                 <Link
                   href="https://linkedin.com/in/ermias-tekilemarkos"
                   target="_blank"
@@ -514,28 +515,31 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 2-COLUMN SECTION: ABOUT ME + PAST EXPERIENCE (matching BRIX Simple Portfolio screenshot) */}
-        <section className="grid grid-cols-1 md:grid-cols-12 gap-10 sm:gap-12 pt-6 border-t border-neutral-100 dark:border-neutral-800/80">
-
+        {/* 2-COLUMN SECTION: ABOUT ME + PAST EXPERIENCE (Responsive Grid for Mobile, Tablet & Desktop) */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 pt-6 sm:pt-8 border-t border-neutral-100 dark:border-neutral-800/80">
+          
           {/* LEFT: About Me */}
-          <div id="about" className="md:col-span-5 space-y-4">
+          <div id="about" className="lg:col-span-5 space-y-3.5 sm:space-y-4">
             <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
               About me
             </h2>
 
-            <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <div className="space-y-3 text-xs xs:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
               <p>
                 Backend-focused full-stack software engineer with 2+ years of professional experience (plus internships) building fintech and agritech microservices and RESTful APIs with Node.js (NestJS, Express.js) and FastAPI.
+              </p>
+              <p>
+                Currently developing payment services for Dashen Bank’s Super App (serving 2M+ subscribers, 25M+ transactions worth 250B+ Birr), focused on credit scoring, idempotency, double-entry accounting, and transaction reconciliation.
               </p>
               <p>
                 Experienced with event-driven architecture (Kafka, RabbitMQ), PostgreSQL, MongoDB, Docker-based CI/CD, and building modern frontends with React and Next.js, and currently exploring and learning ML-focused Data Science.
               </p>
             </div>
 
-            <div className="pt-2">
+            <div className="pt-1 sm:pt-2">
               <Link
                 href="#contact"
-                className="text-sm font-medium text-neutral-900 dark:text-neutral-100 hover:underline inline-flex items-center gap-1"
+                className="text-xs xs:text-sm font-medium text-neutral-900 dark:text-neutral-100 hover:underline inline-flex items-center gap-1"
               >
                 Get in touch
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -544,7 +548,7 @@ export default function Portfolio() {
           </div>
 
           {/* RIGHT: Past Experience */}
-          <div id="experience" className="md:col-span-7 space-y-4">
+          <div id="experience" className="lg:col-span-7 space-y-4 sm:space-y-5">
             <div className="flex items-center justify-between">
               <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
                 Work experience
@@ -554,16 +558,16 @@ export default function Portfolio() {
               </span>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-5 sm:space-y-6">
               {experiences.map((exp, index) => (
                 <div key={index} className="space-y-2 border-b border-neutral-100 dark:border-neutral-800/60 pb-5 last:border-0 last:pb-0">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                     <div>
-                      <h3 className="text-base font-semibold text-neutral-900 dark:text-neutral-100">
+                      <h3 className="text-sm xs:text-base font-semibold text-neutral-900 dark:text-neutral-100">
                         {exp.role}
                       </h3>
-                      <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                        {exp.company} • <span className="text-xs text-neutral-500">{exp.location}</span>
+                      <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+                        {exp.company} • <span className="text-neutral-500">{exp.location}</span>
                       </p>
                     </div>
                     <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400 shrink-0">
@@ -585,7 +589,7 @@ export default function Portfolio() {
                     {exp.stack.map((item) => (
                       <span
                         key={item}
-                        className="text-[11px] px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 font-normal"
+                        className="text-[10px] xs:text-[11px] px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 font-normal"
                       >
                         {item}
                       </span>
@@ -597,9 +601,9 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* PORTFOLIO / PROJECTS SECTION */}
-        <section id="projects" className="pt-6 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        {/* PORTFOLIO / PROJECTS SECTION — Mobile Horizontal Tabs + Responsive Grid */}
+        <section id="projects" className="pt-6 sm:pt-8 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4">
             <div>
               <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
                 Featured projects
@@ -609,50 +613,53 @@ export default function Portfolio() {
               </p>
             </div>
 
-            {/* Category Filter Tabs */}
-            <div className="flex flex-wrap gap-1.5 p-1 bg-neutral-100 dark:bg-neutral-800/70 rounded-full w-fit">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`text-xs px-3 py-1 rounded-full font-medium transition-all ${activeCategory === cat
-                    ? "bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 shadow-xs"
-                    : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"
+            {/* Category Filter Tabs — Horizontally Scrollable on Mobile Devices */}
+            <div className="w-full sm:w-auto overflow-x-auto no-scrollbar pb-1 sm:pb-0 -mx-1 px-1">
+              <div className="flex items-center gap-1 sm:gap-1.5 p-1 bg-neutral-100 dark:bg-neutral-800/70 rounded-full w-max">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`text-xs px-3 py-1.5 rounded-full font-medium whitespace-nowrap transition-all ${
+                      activeCategory === cat
+                        ? "bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 shadow-xs"
+                        : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"
                     }`}
-                >
-                  {cat}
-                </button>
-              ))}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Project Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+          {/* Project Grid: 1 col on Mobile, 2 cols on Tablet & Desktop */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
             {filteredProjects.map((project, index) => (
               <div
                 key={index}
-                className="group flex flex-col justify-between p-5 sm:p-6 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 hover:bg-white dark:hover:bg-neutral-900 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all space-y-4"
+                className="group flex flex-col justify-between p-4 xs:p-5 sm:p-6 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 hover:bg-white dark:hover:bg-neutral-900 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all space-y-4"
               >
                 <div className="space-y-3">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <span className="text-[11px] font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider block mb-1">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0">
+                      <span className="text-[10px] xs:text-[11px] font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider block mb-1">
                         {project.badge}
                       </span>
-                      <h3 className="text-base sm:text-lg font-semibold text-neutral-900 dark:text-neutral-100 leading-snug">
+                      <h3 className="text-sm xs:text-base sm:text-lg font-semibold text-neutral-900 dark:text-neutral-100 leading-snug break-words">
                         {project.title}
                       </h3>
                     </div>
                     {project.internalUse ? (
                       <span
-                        className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-neutral-200/70 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 inline-flex items-center gap-1 shrink-0"
+                        className="text-[10px] xs:text-[11px] font-medium px-2 py-0.5 rounded-full bg-neutral-200/70 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 inline-flex items-center gap-1 shrink-0"
                         title="Internal Enterprise System"
                       >
                         <Lock className="w-2.5 h-2.5" />
                         Internal
                       </span>
                     ) : (
-                      <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 inline-flex items-center gap-1 shrink-0">
+                      <span className="text-[10px] xs:text-[11px] font-medium px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 inline-flex items-center gap-1 shrink-0">
                         Public
                       </span>
                     )}
@@ -665,7 +672,7 @@ export default function Portfolio() {
                   {/* Figma Embed if UX/UI */}
                   {project.figmaEmbed && (
                     <div
-                      className="pt-2 overflow-hidden rounded-xl"
+                      className="pt-2 overflow-hidden rounded-lg sm:rounded-xl w-full max-w-full"
                       dangerouslySetInnerHTML={{ __html: project.figmaEmbed }}
                     />
                   )}
@@ -677,7 +684,7 @@ export default function Portfolio() {
                     {project.tech.map((t) => (
                       <span
                         key={t}
-                        className="text-[11px] px-2 py-0.5 rounded-md bg-white dark:bg-neutral-800 border border-neutral-200/80 dark:border-neutral-700/80 text-neutral-600 dark:text-neutral-300"
+                        className="text-[10px] xs:text-[11px] px-2 py-0.5 rounded-md bg-white dark:bg-neutral-800 border border-neutral-200/80 dark:border-neutral-700/80 text-neutral-600 dark:text-neutral-300"
                       >
                         {t}
                       </span>
@@ -685,7 +692,7 @@ export default function Portfolio() {
                   </div>
 
                   {/* Action links */}
-                  <div className="flex items-center gap-3 pt-1 text-xs font-medium">
+                  <div className="flex flex-wrap items-center gap-3 pt-1 text-xs font-medium">
                     {project.liveUrl && (
                       <Link
                         href={project.liveUrl}
@@ -732,7 +739,7 @@ export default function Portfolio() {
         </section>
 
         {/* SKILLS & TECHNOLOGIES SECTION */}
-        <section id="skills" className="pt-6 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6">
+        <section id="skills" className="pt-6 sm:pt-8 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6">
           <div>
             <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
               Skills & technologies
@@ -742,13 +749,13 @@ export default function Portfolio() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5">
             {skillGroups.map((group, idx) => (
               <div
                 key={idx}
-                className="p-4 sm:p-5 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/40 dark:bg-neutral-900/30 space-y-3"
+                className="p-3.5 xs:p-4 sm:p-5 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/40 dark:bg-neutral-900/30 space-y-3"
               >
-                <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+                <h3 className="text-xs xs:text-sm font-semibold text-neutral-900 dark:text-neutral-100">
                   {group.title}
                 </h3>
                 <div className="flex flex-wrap gap-1.5">
@@ -767,7 +774,7 @@ export default function Portfolio() {
         </section>
 
         {/* EDUCATION & CERTIFICATIONS SECTION */}
-        <section id="education" className="pt-6 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6">
+        <section id="education" className="pt-6 sm:pt-8 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6">
           <div>
             <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
               Education & certifications
@@ -778,13 +785,13 @@ export default function Portfolio() {
           </div>
 
           {/* ASTU Degree Card */}
-          <div className="p-5 sm:p-6 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 space-y-2">
+          <div className="p-4 xs:p-5 sm:p-6 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 space-y-2">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
               <div>
-                <h3 className="text-base sm:text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+                <h3 className="text-sm xs:text-base sm:text-lg font-semibold text-neutral-900 dark:text-neutral-100">
                   B.Sc. in Software Engineering
                 </h3>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
                   Adama Science & Technology University (ASTU)
                 </p>
               </div>
@@ -797,19 +804,19 @@ export default function Portfolio() {
             </p>
           </div>
 
-          {/* Certifications Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Certifications Grid: 1 col on Mobile, 2 cols on Tablet/Desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4">
             {certifications.map((cert, idx) => (
               <div
                 key={idx}
-                className="p-4 sm:p-5 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/40 dark:bg-neutral-900/30 flex flex-col justify-between space-y-3"
+                className="p-3.5 xs:p-4 sm:p-5 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/40 dark:bg-neutral-900/30 flex flex-col justify-between space-y-3"
               >
                 <div>
-                  <div className="flex items-baseline justify-between gap-2">
-                    <h4 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+                  <div className="flex flex-col xs:flex-row xs:items-baseline justify-between gap-1">
+                    <h4 className="text-xs xs:text-sm font-semibold text-neutral-900 dark:text-neutral-100 leading-snug">
                       {cert.title}
                     </h4>
-                    <span className="text-[11px] text-neutral-400 dark:text-neutral-500 shrink-0">
+                    <span className="text-[10px] xs:text-[11px] text-neutral-400 dark:text-neutral-500 shrink-0">
                       {cert.date}
                     </span>
                   </div>
@@ -821,7 +828,7 @@ export default function Portfolio() {
                   </p>
                 </div>
 
-                <div className="flex items-center gap-3 pt-2 text-xs font-medium">
+                <div className="flex flex-wrap items-center gap-3 pt-2 text-xs font-medium">
                   <Link
                     href={cert.link}
                     target="_blank"
@@ -849,59 +856,59 @@ export default function Portfolio() {
         </section>
 
         {/* CONTACT SECTION — Simple, Human, Inviting */}
-        <section id="contact" className="pt-6 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6">
+        <section id="contact" className="pt-6 sm:pt-8 border-t border-neutral-100 dark:border-neutral-800/80 space-y-5 sm:space-y-6">
           <div className="max-w-xl space-y-2">
             <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
               Let's connect
             </h2>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
               I am open to software engineering opportunities, fintech backends, and collaborative engineering projects. Feel free to reach out directly.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
-            <Button asChild size="default" className="rounded-full">
+          <div className="flex flex-wrap items-center gap-2 xs:gap-3">
+            <Button asChild size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-4">
               <Link href="mailto:ermiasteklemarkos@gmail.com">
-                <Mail className="w-4 h-4 mr-1.5" />
+                <Mail className="w-3.5 h-3.5 xs:w-4 xs:h-4 mr-1.5" />
                 Send an email
               </Link>
             </Button>
 
-            <Button asChild variant="outline" size="default" className="rounded-full">
+            <Button asChild variant="outline" size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-3.5 xs:px-4">
               <Link href="https://linkedin.com/in/ermias-tekilemarkos" target="_blank" rel="noopener noreferrer">
-                <Linkedin className="w-4 h-4 mr-1.5" />
+                <Linkedin className="w-3.5 h-3.5 xs:w-4 xs:h-4 mr-1.5" />
                 LinkedIn
-                <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
+                <ArrowUpRight className="w-3 h-3 xs:w-3.5 xs:h-3.5 ml-1" />
               </Link>
             </Button>
 
-            <Button asChild variant="outline" size="default" className="rounded-full">
+            <Button asChild variant="outline" size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-3.5 xs:px-4">
               <Link href="https://github.com/ermi-tekk21" target="_blank" rel="noopener noreferrer">
-                <Github className="w-4 h-4 mr-1.5" />
+                <Github className="w-3.5 h-3.5 xs:w-4 xs:h-4 mr-1.5" />
                 GitHub
-                <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
+                <ArrowUpRight className="w-3 h-3 xs:w-3.5 xs:h-3.5 ml-1" />
               </Link>
             </Button>
 
-            <Button asChild variant="outline" size="default" className="rounded-full">
+            <Button asChild variant="outline" size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-3.5 xs:px-4">
               <Link href="https://t.me/Tek_jeremy_x03" target="_blank" rel="noopener noreferrer">
-                <Send className="w-4 h-4 mr-1.5" />
+                <Send className="w-3.5 h-3.5 xs:w-4 xs:h-4 mr-1.5" />
                 Telegram
-                <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
+                <ArrowUpRight className="w-3 h-3 xs:w-3.5 xs:h-3.5 ml-1" />
               </Link>
             </Button>
 
-            <Button asChild variant="outline" size="default" className="rounded-full">
+            <Button asChild variant="outline" size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-3.5 xs:px-4">
               <Link href={resumeUrl} target="_blank" rel="noopener noreferrer">
                 Resume
-                <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
+                <ArrowUpRight className="w-3 h-3 xs:w-3.5 xs:h-3.5 ml-1" />
               </Link>
             </Button>
           </div>
 
           {/* Direct Details Box */}
-          <div className="p-4 sm:p-5 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/30 flex flex-wrap gap-y-2 gap-x-6 text-xs text-neutral-600 dark:text-neutral-400">
-            <div>
+          <div className="p-3.5 xs:p-4 sm:p-5 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/30 flex flex-col sm:flex-row sm:flex-wrap gap-y-2 gap-x-6 text-xs text-neutral-600 dark:text-neutral-400">
+            <div className="break-all">
               <span className="font-medium text-neutral-900 dark:text-neutral-100">Email: </span>
               <a href="mailto:ermiasteklemarkos@gmail.com" className="hover:underline">ermiasteklemarkos@gmail.com</a>
             </div>
@@ -918,81 +925,82 @@ export default function Portfolio() {
 
       </div>
 
-      {/* FLOATING BOTTOM DOCK — Inspired by BRIX Simple Portfolio Template Screenshot */}
+      {/* FLOATING BOTTOM DOCK — Perfectly Responsive for All Mobile Devices & Tablets */}
       <nav
         aria-label="Floating navigation"
-        className="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md border border-neutral-200/90 dark:border-neutral-800 shadow-lg shadow-neutral-950/5 rounded-full px-2 sm:px-3 py-1.5 flex items-center gap-1 sm:gap-2 transition-all"
+        className="fixed bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 z-40 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md border border-neutral-200/90 dark:border-neutral-800 shadow-lg shadow-neutral-950/5 rounded-full px-1.5 xs:px-2.5 sm:px-3 py-1 sm:py-1.5 flex items-center gap-0.5 xs:gap-1 sm:gap-2 max-w-[calc(100vw-1.25rem)] overflow-x-auto no-scrollbar transition-all"
       >
         <Link
           href="#hero"
-          className="p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          className="p-1.5 xs:p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shrink-0"
           title="Home"
           aria-label="Home"
         >
-          <Home className="w-4 h-4" />
+          <Home className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
         </Link>
         <Link
           href="#about"
-          className="p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          className="p-1.5 xs:p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shrink-0"
           title="About me"
           aria-label="About me"
         >
-          <User className="w-4 h-4" />
+          <User className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
         </Link>
         <Link
           href="#experience"
-          className="p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          className="p-1.5 xs:p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shrink-0"
           title="Work experience"
           aria-label="Work experience"
         >
-          <Briefcase className="w-4 h-4" />
+          <Briefcase className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
         </Link>
         <Link
           href="#projects"
-          className="p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          className="p-1.5 xs:p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shrink-0"
           title="Featured projects"
           aria-label="Featured projects"
         >
-          <Layers className="w-4 h-4" />
+          <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
         </Link>
         <Link
           href="#skills"
-          className="p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          className="p-1.5 xs:p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shrink-0"
           title="Skills"
           aria-label="Skills"
         >
-          <Cpu className="w-4 h-4" />
+          <Cpu className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
         </Link>
         <Link
           href="#education"
-          className="p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          className="p-1.5 xs:p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shrink-0"
           title="Education & Certifications"
           aria-label="Education & Certifications"
         >
-          <GraduationCap className="w-4 h-4" />
+          <GraduationCap className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
         </Link>
         <Link
           href="#contact"
-          className="p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          className="p-1.5 xs:p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shrink-0"
           title="Contact"
           aria-label="Contact"
         >
-          <Mail className="w-4 h-4" />
+          <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
         </Link>
 
-        <div className="w-[1px] h-4 bg-neutral-200 dark:bg-neutral-800 mx-1" />
+        <div className="w-[1px] h-3.5 sm:h-4 bg-neutral-200 dark:border-neutral-800 mx-0.5 xs:mx-1 shrink-0" />
 
         {/* Music Player Button in Dock */}
         <button
           onClick={toggleMusic}
-          className={`p-2 rounded-full transition-colors ${isPlaying
-            ? "text-neutral-950 dark:text-white bg-neutral-100 dark:bg-neutral-800"
-            : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800"
-            }`}
+          className={`p-1.5 xs:p-2 rounded-full transition-colors shrink-0 ${
+            isPlaying
+              ? "text-neutral-950 dark:text-white bg-neutral-100 dark:bg-neutral-800"
+              : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800"
+          }`}
           title={isPlaying ? "Pause music" : "Play subtle background music"}
           aria-label="Play or pause background music"
         >
-          <Music className={`w-4 h-4 ${isPlaying ? "music-wiggle-active" : ""}`} />
+          <Music className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isPlaying ? "music-wiggle-active" : ""}`} />
         </button>
       </nav>
     </div>
