@@ -3,50 +3,44 @@
 import { useState, useRef, useEffect } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   Github,
   Linkedin,
   Mail,
   MapPin,
   Phone,
-  Code,
+  Code2,
   Brain,
   Palette,
   GraduationCap,
   Briefcase,
   Award,
-  ExternalLink,
-  Zap,
-  Rocket,
-  Download,
+  ArrowUpRight,
   Lock,
   Send,
   Play,
   Square,
   Music,
+  Home,
+  User,
+  Layers,
+  Cpu,
+  CheckCircle2,
+  ExternalLink,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
 export default function Portfolio() {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [showStickyPlayer, setShowStickyPlayer] = useState(false)
+  const [activeCategory, setActiveCategory] = useState<string>("All")
   const [mounted, setMounted] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
+  const resumeUrl = "https://drive.google.com/file/d/1l28kgiCx8k1LetniY2NJM--kxrkKPd0b/view?usp=sharing"
+
   useEffect(() => {
     setMounted(true)
-    const handleScroll = () => {
-      if (window.scrollY > 400) {
-        setShowStickyPlayer(true)
-      } else {
-        setShowStickyPlayer(false)
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const toggleMusic = () => {
@@ -55,1008 +49,952 @@ export default function Portfolio() {
         audioRef.current.pause()
         audioRef.current.currentTime = 0
       } else {
-        audioRef.current.play()
+        audioRef.current.play().catch(() => { })
       }
       setIsPlaying(!isPlaying)
     }
   }
 
-  const skills = {
-    "Programming Languages": ["JavaScript", "TypeScript", "Python", "Go"],
-    "Software Architecture": ["Microservices", "Monolithic", "Client-Server"],
-    "Frameworks/Libraries": ["Node.js (NestJS, Express.js)", "FastAPI", "Next.js", "React.js"],
-    "Tools/DevOps": ["Docker", "Git/ GitHub", "Swagger", "GitHub Actions", "Jenkins", "AWS (EC2, S3)"],
-    "Databases and ORM": ["PostgreSQL", "MySQL", "MongoDB", "TypeORM", "Prisma", "SQLAlchemy"],
-    Methodologies: ["Waterfall", "Agile", "Scrum"],
-  }
-
-  const webAppProjects: any[] = [
-    {
-      title: "Dynamic Credit Scoring Engine",
-      description:
-        "Internal platform for Green Agro Solution PLC. A layered architecture system that enables the configuration of custom scoring models, evaluation of applicants against dynamic criteria, and data-driven lending decisions. With more than 30 API Endpoints, minimizing 80% workload compared to working with a hard-coded existing credit scoring tool.",
-      tech: ["FastAPI", "PostgreSQL", "SQLAlchemy", "SonarQube"],
-      internalUse: true,
-      category: "Web App",
-    },
-    {
-      title: "Event and Training Management System",
-      description:
-        "Internal platform for Lersha – Green Agro Solution PLC and international partners, designed for training coordination, event planning, and management. Implements a microservices architecture to streamline event coordination and reporting by 30%.",
-      tech: ["NestJS", "TypeScript", "PostgreSQL", "TypeORM", "RabbitMQ", "SonarQube"],
-      internalUse: true,
-      category: "Microservices",
-    },
-    {
-      title: "Call Center Quality Evaluation System",
-      description:
-        "Designed, developed, and deployed an internal software system to evaluate call agent performance at Lersha - Green Agro Solution, improving monitoring and productivity insights.",
-      tech: ["NestJS", "TypeScript", "PostgreSQL", "TypeORM", "Kafka", "SonarQube", "Kong API Gateway"],
-      internalUse: true,
-      category: "Microservices",
-    },
-    {
-      title: "Nutri-Focus: AI-Assisted Ethiopian Nutritional Guide",
-      description:
-        "A platform that provides personalized meal recommendations based on Ethiopian cuisine using machine learning models (Random Forest Regressor) with 80% test coverage.",
-      tech: ["Next js", "Nest js and FastAPI", "SQLAlchemy", "ML: Scikit-learn, Random Forest, Pandas, NumPy", "AWS EC2"],
-      internalUse: false,
-      liveUrl: "https://nutrifocusmealplan.duckdns.org/",
-      category: "Web App",
-    },
-    {
-      title: "YC-Directory",
-      description:
-        "A startup directory platform where entrepreneurs can submit, discover, and explore startups. Built as a Y Combinator-inspired clone with real-time content management, GitHub authentication, and dynamic startup profiles.",
-      tech: ["Next.js", "Sanity", "Auth.js", "Tailwind CSS", "ShadCN UI"],
-      liveUrl: "https://yc-directory-clone-by-ermi.vercel.app/",
-      category: "Web App",
-    },
-    {
-      title: "Fast Proforma",
-      description:
-        "Proforma invoice management system for car spare parts shop with PDF generation and preview capabilities.",
-      tech: ["Next.js", "MongoDB", "Tailwind CSS", "ShadCN UI"],
-      liveUrl: "https://fast-spare.vercel.app/auth/login",
-      category: "Web App",
-    },
-    {
-      title: "Sebez Visual Art eCommerce Website",
-      description:
-        "Full-stack eCommerce platform for visual art products with user management, Chapa payment integration, and chat functionality.",
-      tech: ["Next.js", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
-      liveUrl: "https://sebez-visual-frontend.onrender.com/",
-      category: "Web App",
-    },
-    {
-      title: "Ad Ventures",
-      description:
-        "GPS-based advertising platform for taxis and billboards with focus on user experience, responsive web layouts, and real-time data processing.",
-      tech: ["Next.js", "TypeScript", "Zustand", "Tailwind CSS"],
-      githubUrl: "https://github.com/Ermi-Tekk21/ad-ventures",
-      category: "Web App",
-    },
-    {
-      title: "Scooter-Sharing System",
-      description:
-        "Users can easily rent electric scooters by logging in with OTP, completing KYC, scanning a scooter QR to start a ride, and ending the ride at a destination station with admin approval. Payments are processed via Telebirr or Chapa.",
-      tech: ["ExpressJS", "PostgreSQL", "TypeORM", "NextJS", "Tailwind CSS"],
-      category: "Web App",
-    },
-  ]
-
-  const mlAiProjects: any[] = [
-    {
-      title: "Nutri-Focus: AI-Assisted Ethiopian Nutritional Guide",
-      description:
-        "Led project design and implementation, developing the ML component using FastAPI, Scikit-learn, Pandas NumPy, and AWS Free Tier with ~2,000 user profiles and ~400 Ethiopian foods.",
-      tech: ["FastAPI", "Scikit-learn", "Pandas", "NumPy", "AWS Free Tier"],
-      category: "ML & AI",
-      liveUrl: "https://ml-backend.duckdns.org/API-DOCS",
-    },
-    {
-      title: "Solar Data Explorer",
-      description:
-        "Analyze and visualize solar energy potential and usage data for Benin, Sierra Leone, and Togo. Provides insights into solar energy trends and facilitates comparisons across these countries using advanced data analysis techniques.",
-      tech: ["Python", "Jupyter Notebook", "Streamlit", "Pandas", "Matplotlib", "Seaborn", "NumPy"],
-      githubUrl: "https://github.com/Ermi-Tekk21/solar-challenge-week1",
-      category: "ML & AI",
-    },
-  ]
-
-  const uxUiProjects: any[] = [
-    {
-      title: "Yene-Med",
-      description:
-        "A comprehensive platform for navigating pharmacies, drug searching, online payment, prescription verification, delivery services and more.",
-      tech: ["Figma", "UX Research", "UI Design", "Prototyping"],
-      figmaEmbed:
-        '<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" class="w-full aspect-[16/9]" src="https://embed.figma.com/design/8tZeMxk82HuL7nPRVP38gP/Pharmacy-app-ui?node-id=0-1&embed-host=share" allowfullscreen></iframe>',
-      category: "UX/UI",
-    },
-    {
-      title: "Nutri-Focus UI Design",
-      description:
-        "Assisted in UX/UI design using Figma for the AI-powered nutritional guide, enhancing user experience and cultural relevance for Ethiopian cuisine.",
-      tech: ["Figma", "UX Research", "UI Design", "User Testing"],
-      figmaEmbed:
-        '<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" class="w-full aspect-[16/9]" src="https://embed.figma.com/design/RXFPmQvjcLDQajzgWfsjSc/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>',
-      category: "UX/UI",
-    },
-    {
-      title: "Girar Digital Marketing Website",
-      description:
-        "Complete website design for a digital marketing agency, focusing on modern aesthetics and conversion optimization.",
-      tech: ["Figma", "Web Design", "Brand Identity", "Responsive Design"],
-      figmaEmbed:
-        '<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" class="w-full aspect-[16/9]" src="https://embed.figma.com/design/Oqp9y0XfRF1qOX0njN1rus/Girar-Portfolio?embed-host=share" allowfullscreen></iframe>',
-      category: "UX/UI",
-    },
-    {
-      title: "Digital Menu - BeteEnda Restaurant",
-      description:
-        "Interactive digital menu design for BeteEnda restaurant, enhancing customer experience with modern UI/UX principles.",
-      tech: ["Figma", "Menu Design", "Interactive Design", "Mobile-First"],
-      figmaEmbed:
-        '<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" class="w-full aspect-[16/9]" src="https://embed.figma.com/design/vWcimE0GlSFHeBZqZ0MGCU/BeteEnda?embed-host=share" allowfullscreen></iframe>',
-      category: "UX/UI",
-    },
-  ]
-
   const experiences = [
     {
-      role: "Software Engineer (Back-end Developer)",
-      company: "Lersha - Green Agro Solution PLC",
-      date: "07/2025 – Present",
+      role: "Back-end Developer",
+      company: "EagleLion System Technology",
+      date: "06/2026 – Present",
+      location: "Addis Ababa, Ethiopia",
       description: [
-        "Developed and maintained backend logic, databases, and APIs for multiple projects, including two new software systems using Node.js, NestJS, FastAPI, TypeORM, PostgreSQL, Kafka, RabbitMQ, SonarQube and Kong API Gateway.",
-        "Implemented microservices architecture that significantly improved scalability and reduced response times several-fold."
-      ]
+        "Build fintech microservices for Dashen Bank’s Super App, serving 2M+ subscribers and processing 25M+ transactions worth 250B+ Birr (as of March 2026), along with branch portal systems and Dashen Wallet branch-side configuration.",
+        "Implement idempotency to prevent duplicate payments, double-entry accounting, transaction reconciliation, and automated settlements, with secure secret management for credentials.",
+        "Design scalable background workers and event pipelines using Kafka and Redis for low-latency transaction processing.",
+      ],
+      stack: ["Node.js (Express.js, NestJS)", "TypeScript", "Redis", "Kafka", "PostgreSQL", "MongoDB"],
+    },
+    {
+      role: "Software Developer",
+      company: "Lersha - Green Agro Solution PLC",
+      date: "07/2025 – 08/2026",
+      location: "Addis Ababa, Ethiopia",
+      description: [
+        "Built and maintained backend logic, databases, and APIs across multiple agritech projects, including three systems from scratch.",
+        "Designed a microservices architecture using Kong API Gateway, improving scalability and reducing API response times by approximately 40%.",
+        "Implemented event-driven communication between services using Kafka and RabbitMQ.",
+        "Enforced strict code quality, test coverage, and maintainability using SonarQube.",
+      ],
+      stack: ["Node.js", "NestJS", "FastAPI", "TypeORM", "PostgreSQL", "Kong", "Kafka", "RabbitMQ"],
     },
     {
       role: "ALX Software Engineering Tutor",
       company: "ALX Africa",
       date: "12/2024 – 02/2025",
+      location: "Remote",
       description: [
-        "Volunteered to deliver over five individualized mentorship sessions to ALX SE Cohort 22 students across Africa (Ethiopia, Ghana, and South Africa).",
-        "Facilitated hands-on guidance on Specialization Portfolio Projects and complex technical problems."
-      ]
+        "Mentored ALX Software Engineering Cohort 22 students across Ethiopia, Ghana, and South Africa through 5+ one-on-one sessions.",
+        "Provided hands-on guidance on full-stack portfolio projects, complex system architecture, and debugging challenges.",
+      ],
+      stack: ["Mentorship", "Backend Engineering", "System Design", "C / Python"],
     },
     {
-      role: "Full Stack Web Developer",
+      role: "Web Developer Intern",
       company: "1888EC",
       date: "07/2024 – 09/2024",
+      location: "Addis Ababa, Ethiopia",
       description: [
-        "Interned at 1888EC as a Front-End Web Developer, contributing to the LinkFarm website.",
-        "Leveraged Astro.js, React, Tailwind CSS, and ShadCN UI to craft responsive, interactive, and user-friendly web applications."
-      ]
+        "Built responsive pages for the LinkFarm website using modern component architectures.",
+        "Crafted interactive and accessible UI components with Astro.js, React, Tailwind CSS, and ShadCN UI.",
+      ],
+      stack: ["Astro.js", "React", "Tailwind CSS", "ShadCN UI"],
     },
     {
-      role: "Front-end Developer",
+      role: "Front-end Developer Intern",
       company: "Backos Technologies Plc",
       date: "07/2023 – 09/2023",
+      location: "Adama, Ethiopia",
       description: [
-        "Interned at Backos, developing the e-commerce website e-shop to strengthen web development skills.",
-        "Utilized HTML, CSS, Tailwind CSS, and React to build a responsive, functional, and user-friendly online shopping platform."
-      ]
-    }
+        "Developed the e-shop e-commerce platform to deliver an intuitive and responsive online shopping experience.",
+        "Built accessible user interfaces using HTML, CSS, Tailwind CSS, and React.",
+      ],
+      stack: ["HTML", "CSS", "Tailwind CSS", "React"],
+    },
+  ]
+
+  const projects = [
+    {
+      title: "Dashen Bank Super App — Scheduled Payments",
+      subtitle: "Enterprise Fintech Microservices",
+      category: "Fintech & Backend",
+      featured: true,
+      description:
+        "Built backend services for scheduled and recurring payments across Telebirr and M-Pesa wallets on Dashen Bank's Super App serving 2M+ subscribers. Implemented idempotency to prevent duplicate payments, transaction reconciliation, double-entry accounting, and secure secret management with SMS/email notifications.",
+      tech: ["Node.js", "NestJS", "Express.js", "TypeScript", "Kafka", "Redis", "PostgreSQL", "MongoDB"],
+      internalUse: true,
+      badge: "Flagship Fintech",
+    },
+    {
+      title: "Dynamic Credit Scoring Engine",
+      subtitle: "Green Agro Solution PLC",
+      category: "Fintech & Backend",
+      featured: true,
+      description:
+        "Layered-architecture system enabling lending teams to configure custom dynamic scoring models and evaluate applicants against dynamic criteria for data-driven lending decisions. Delivered 30+ production API endpoints and reduced manual loan processing workload by 80%.",
+      tech: ["FastAPI", "PostgreSQL", "SQLAlchemy", "SonarQube", "Python"],
+      internalUse: true,
+      badge: "Enterprise",
+    },
+    {
+      title: "Nutri-Focus: AI Nutritional Guide",
+      subtitle: "Personalized Ethiopian Nutrition Platform",
+      category: "ML & AI",
+      featured: true,
+      description:
+        "Led design and implementation of the ML component, generating personalized nutrition recommendations from user profile data. Trained on ~2,000 user profiles and ~400 Ethiopian foods, achieving 70-80% model accuracy on test data.",
+      tech: ["FastAPI", "Scikit-learn", "Pandas", "NumPy", "Next.js", "AWS Free Tier"],
+      liveUrl: "https://nutrifocusmealplan.duckdns.org/",
+      apiDocsUrl: "https://ml-backend.duckdns.org/API-DOCS",
+      badge: "Machine Learning",
+    },
+    {
+      title: "Call Center Quality Evaluation System",
+      subtitle: "Lersha - Green Agro Solution PLC",
+      category: "Fintech & Backend",
+      featured: false,
+      description:
+        "Designed, developed, and deployed an internal microservices system to evaluate call agent performance, providing managers with actionable monitoring metrics and productivity insights connected via Kong API Gateway.",
+      tech: ["NestJS", "TypeScript", "PostgreSQL", "TypeORM", "Kafka", "SonarQube", "Kong API Gateway"],
+      internalUse: true,
+      badge: "Microservices",
+    },
+    {
+      title: "Scooter-Sharing System",
+      subtitle: "IoT & Mobility Rental Platform",
+      category: "Full-Stack Web",
+      featured: false,
+      description:
+        "End-to-end electric scooter rental platform with OTP authentication, KYC verification, QR code unlocking, and destination station returns with admin approval. Seamlessly integrated Telebirr and Chapa payments.",
+      tech: ["Express.js", "PostgreSQL", "TypeORM", "Next.js", "Tailwind CSS"],
+      badge: "Full Stack",
+    },
+    {
+      title: "Event & Training Management System",
+      subtitle: "Internal Platform for Lersha & Partners",
+      category: "Fintech & Backend",
+      featured: false,
+      description:
+        "Designed a platform for training coordination, event planning, and management for Lersha and international partners. Integrated with existing microservices via RabbitMQ, boosting coordination and reporting efficiency by 30%.",
+      tech: ["NestJS", "TypeScript", "PostgreSQL", "TypeORM", "RabbitMQ", "SonarQube"],
+      internalUse: true,
+      badge: "Microservices",
+    },
+    {
+      title: "YC-Directory",
+      subtitle: "Startup Showcase & Pitch Directory",
+      category: "Full-Stack Web",
+      featured: false,
+      description:
+        "A Y Combinator-inspired startup directory where founders can pitch, discover, and filter emerging startups. Features GitHub OAuth authentication, real-time Sanity CMS integration, and dynamic startup profiles.",
+      tech: ["Next.js", "Sanity CMS", "Auth.js", "Tailwind CSS", "TypeScript"],
+      liveUrl: "https://yc-directory-clone-by-ermi.vercel.app/",
+      badge: "Web App",
+    },
+    {
+      title: "Fast Proforma",
+      subtitle: "Invoice & Auto-Quotation Generator",
+      category: "Full-Stack Web",
+      featured: false,
+      description:
+        "Proforma invoice and estimation management software built for auto spare parts shops with instant PDF generation, item catalogue management, and quick preview capabilities.",
+      tech: ["Next.js", "MongoDB", "Tailwind CSS", "ShadCN UI"],
+      liveUrl: "https://fast-spare.vercel.app/auth/login",
+      badge: "SaaS",
+    },
+    {
+      title: "Sebez Visual Art eCommerce",
+      subtitle: "Creative Marketplace Platform",
+      category: "Full-Stack Web",
+      featured: false,
+      description:
+        "Full-stack eCommerce platform for visual art products featuring rich user management, storefront browsing, instant Chapa payment gateway integration, and real-time chat functionality.",
+      tech: ["Next.js", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+      liveUrl: "https://sebez-visual-frontend.onrender.com/",
+      badge: "eCommerce",
+    },
+    {
+      title: "Ad Ventures",
+      subtitle: "Transit & Billboard Advertising",
+      category: "Full-Stack Web",
+      featured: false,
+      description:
+        "GPS-based advertising management platform for taxi fleets and digital billboards with responsive dashboard layouts, real-time location metrics, and campaign management.",
+      tech: ["Next.js", "TypeScript", "Zustand", "Tailwind CSS"],
+      githubUrl: "https://github.com/Ermi-Tekk21/ad-ventures",
+      badge: "Web App",
+    },
+    {
+      title: "Solar Data Explorer",
+      subtitle: "Energy Analytics & Visualizer",
+      category: "ML & AI",
+      featured: false,
+      description:
+        "Data science platform analyzing and visualizing solar energy potential and irradiation trends across Benin, Sierra Leone, and Togo with interactive exploratory charts.",
+      tech: ["Python", "Streamlit", "Pandas", "Matplotlib", "Seaborn", "NumPy"],
+      githubUrl: "https://github.com/Ermi-Tekk21/solar-challenge-week1",
+      badge: "Data Science",
+    },
+    {
+      title: "Yene-Med UI/UX",
+      subtitle: "Pharmacy Navigation & Prescription Delivery",
+      category: "UX/UI Design",
+      featured: false,
+      description:
+        "Comprehensive UI/UX design prototype for navigating local pharmacies, searching medications, verifying prescriptions, and booking on-demand deliveries.",
+      tech: ["Figma", "UX Research", "Interactive Prototyping", "Design System"],
+      figmaEmbed:
+        '<iframe style="border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 12px;" class="w-full aspect-[16/9]" src="https://embed.figma.com/design/8tZeMxk82HuL7nPRVP38gP/Pharmacy-app-ui?node-id=0-1&embed-host=share" allowfullscreen></iframe>',
+      badge: "Figma Prototype",
+    },
+    {
+      title: "Nutri-Focus UI Design",
+      subtitle: "AI Nutritional Guide Design",
+      category: "UX/UI Design",
+      featured: false,
+      description:
+        "Cultural-first UX/UI design crafted for the AI-powered Ethiopian nutritional guide, focusing on intuitive macro-nutrient tracking and culturally tailored diet plans.",
+      tech: ["Figma", "Design System", "Mobile UX", "User Testing"],
+      figmaEmbed:
+        '<iframe style="border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 12px;" class="w-full aspect-[16/9]" src="https://embed.figma.com/design/RXFPmQvjcLDQajzgWfsjSc/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>',
+      badge: "Figma Prototype",
+    },
+    {
+      title: "Girar Digital Marketing Website",
+      subtitle: "Agency Website Design",
+      category: "UX/UI Design",
+      featured: false,
+      description:
+        "Modern marketing agency website design featuring conversion-focused landing layouts, portfolio presentation, and typography systems.",
+      tech: ["Figma", "Web Design", "Brand Identity", "Responsive Design"],
+      figmaEmbed:
+        '<iframe style="border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 12px;" class="w-full aspect-[16/9]" src="https://embed.figma.com/design/Oqp9y0XfRF1qOX0njN1rus/Girar-Portfolio?embed-host=share" allowfullscreen></iframe>',
+      badge: "Figma Prototype",
+    },
+    {
+      title: "Digital Menu — BeteEnda Restaurant",
+      subtitle: "Interactive Digital Hospitality Experience",
+      category: "UX/UI Design",
+      featured: false,
+      description:
+        "Interactive digital menu design for BeteEnda restaurant, enhancing guest dining experience with mobile-first layout and intuitive dish categorization.",
+      tech: ["Figma", "Menu UX", "Mobile Design", "Interaction Design"],
+      figmaEmbed:
+        '<iframe style="border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 12px;" class="w-full aspect-[16/9]" src="https://embed.figma.com/design/vWcimE0GlSFHeBZqZ0MGCU/BeteEnda?embed-host=share" allowfullscreen></iframe>',
+      badge: "Figma Prototype",
+    },
+  ]
+
+  const categories = ["All", "Fintech & Backend", "Full-Stack Web", "ML & AI", "UX/UI Design"]
+
+  const filteredProjects =
+    activeCategory === "All"
+      ? projects
+      : projects.filter((project) => project.category === activeCategory)
+
+  const skillGroups = [
+    {
+      title: "Programming Languages",
+      skills: ["JavaScript", "TypeScript", "Python", "Go"],
+    },
+    {
+      title: "Backend & Frameworks",
+      skills: ["Node.js", "NestJS", "Express.js", "FastAPI", "GoChi", "Next.js", "React.js"],
+    },
+    {
+      title: "Architecture & Distributed Systems",
+      skills: ["Microservices", "Event-Driven Architecture", "Kafka", "RabbitMQ", "RESTful APIs", "Idempotency Patterns"],
+    },
+    {
+      title: "Databases & ORMs",
+      skills: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "TypeORM", "SQLAlchemy", "Prisma"],
+    },
+    {
+      title: "DevOps & Cloud Tools",
+      skills: ["Docker", "Git / GitHub", "GitHub Actions", "Jenkins", "AWS (EC2, S3)", "Kong API Gateway", "SonarQube", "Swagger"],
+    },
+    {
+      title: "Engineering Practices",
+      skills: ["Double-Entry Accounting", "Transaction Reconciliation", "Agile & Scrum", "Test-Driven Development", "Code Quality"],
+    },
+  ]
+
+  const certifications = [
+    {
+      title: "ALX Software Engineering Program",
+      issuer: "ALX Africa",
+      date: "Jan 2023 — Jul 2024",
+      description: "12-month intensive program covering backend systems, C, Python, algorithms, databases, and distributed infrastructure.",
+      link: "https://savanna.alxafrica.com/certificates/eJSHf2XsEz",
+      linkText: "View Certificate",
+    },
+    {
+      title: "ALX SE Tutor Recognition & Letter of Recommendation",
+      issuer: "ALX Africa",
+      date: "Feb 2025",
+      description: "Recognized with a Letter of Recommendation and Certificate for exceptional technical guidance of Cohort 22 students.",
+      link: "https://drive.google.com/file/d/136RIcHt6dUg0B7f6JAiMF1CRTVfJVpBy/view",
+      secondaryLink: "https://drive.google.com/file/d/1XJdvb-Bdig6TCQ5l6BBKhT2Vp2EhVjfb/view",
+      linkText: "Recommendation Letter",
+      secondaryLinkText: "Certificate",
+    },
+    {
+      title: "ALX Ventures Founders Academy",
+      issuer: "ALX Africa",
+      date: "May 2024 — Jul 2024",
+      description: "Focused on entrepreneurship, venture building, product-market fit, and technical product leadership.",
+      link: "https://savanna.alxafrica.com/certificates/hcPHpY72mx",
+      linkText: "View Certificate",
+    },
+    {
+      title: "Advanced Web Development Bootcamp",
+      issuer: "CSECASTU",
+      date: "2023",
+      description: "Advanced training in modern web applications, scalable architectures, and developer tooling.",
+      link: "https://www.linkedin.com/in/ermias-tekilemarkos/details/certifications/1729430251294/single-media-viewer/?profileId=ACoAAECF_iEBfBQDBf7CMtySAf_u2AhuqyjV_pE",
+      linkText: "View Certificate",
+    },
+    {
+      title: "National Science Fair Competition",
+      issuer: "UNESCO & Ministry of Innovation & Technology",
+      date: "Nov 2018",
+      description: "National-level competition organized by MoE, UNESCO, and the Ministry of Innovation.",
+      link: "https://www.linkedin.com/in/ermias-tekilemarkos/details/certifications/1729429628737/single-media-viewer/?profileId=ACoAAECF_iEBfBQDBf7CMtySAf_u2AhuqyjV_pE",
+      linkText: "View Certificate",
+    },
   ]
 
   return (
-    <div className="min-h-screen bg-background scroll-smooth">
-      {/* Hero Section */}
-      <section className="relative min-h-[100dvh] flex items-center justify-center py-24 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-black dark:via-gray-900 dark:to-black overflow-hidden transition-colors duration-500">
+    <div className="relative min-h-screen px-3 sm:px-6 md:px-8">
+      {/* Background audio element */}
+      <audio
+        ref={audioRef}
+        src="/Chill Pulse - Office Jam (freetouse.com).mp3"
+        onEnded={() => setIsPlaying(false)}
+      />
 
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] dark:opacity-5"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,150,0.03),transparent)] dark:bg-[radial-gradient(circle_at_center,rgba(0,255,150,0.05),transparent)]"></div>
+      {/* Main Single-Card Frame inspired by BRIX Templates Simple Portfolio */}
+      <div className="max-w-4xl lg:max-w-5xl mx-auto my-4 sm:my-8 bg-white dark:bg-[#151619] rounded-[24px] sm:rounded-[32px] border border-neutral-200/90 dark:border-neutral-800 shadow-[0_2px_24px_rgba(0,0,0,0.04)] dark:shadow-none p-6 sm:p-10 md:p-14 space-y-14 sm:space-y-16">
 
-        <div className="absolute top-10 left-10 w-40 sm:w-56 md:w-72 h-40 sm:h-56 md:h-72 bg-green-500/[0.05] dark:bg-green-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-purple-500/[0.05] dark:bg-purple-500/10 rounded-full blur-3xl"></div>
-
-        <div className="flex flex-col-reverse lg:flex-row gap-12 lg:gap-16 items-center justify-between max-w-7xl mx-auto relative z-10 w-full">
-
-            {/* LEFT */}
-            <div className="space-y-6 text-center lg:text-left">
-
-              {/* Status */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-2 bg-green-100 dark:bg-green-500/10 rounded-full text-xs sm:text-sm font-medium text-green-600 dark:text-green-400 backdrop-blur font-mono border border-green-200 dark:border-green-500/20">
-                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                Available for Work
-              </div>
-
-              {/* Name */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-blue-600 via-blue-800 to-indigo-900 dark:from-green-400 dark:via-blue-500 dark:to-purple-500 font-mono drop-shadow-sm dark:drop-shadow-none">
-                {"Ermias Teklemarkos"}
-              </h1>
-
-              {/* Title */}
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 font-medium font-mono">
-                $ Software Engineer | Backend-Focused Full-Stack Developer
-              </p>
-
-              {/* Tech Stack */}
-              <p className="text-xs sm:text-sm text-green-600 dark:text-green-500 font-mono opacity-80">
-                {"-- Node.js(NestJS & ExpressJS) | FastAPI | RabbitMQ and Kafka"}<br />
-                {"-- SQL and NoSQL DBs | Docker | React | Next.js"}
-              </p>
-
-
-              {/* Buttons */}
-              <div className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4">
-
-                <Button
-                  asChild
-                  size="sm"
-                  className="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-xs sm:text-sm font-mono text-white shadow-lg shadow-green-500/20 dark:shadow-none"
-                >
-                  <Link href="#contact">
-                    <Mail className="w-3 sm:w-4 h-3 sm:h-4 mr-1 sm:mr-2" />
-                    Let's Build
-                  </Link>
-                </Button>
-
-                <Button
-                  variant="outline"
-                  size="sm"
-                  asChild
-                  className="bg-green-50/50 dark:bg-transparent border border-green-600/50 dark:border-green-500/30 text-green-700 dark:text-green-400 hover:bg-green-100 dark:hover:bg-green-500/10 text-xs sm:text-sm font-mono transition-all"
-                >
-                  <Link href="#projects">
-                    <Rocket className="w-3 sm:w-4 h-3 sm:h-4 mr-1 sm:mr-2" />
-                    See Work
-                  </Link>
-                </Button>
-
-                <Button
-                  variant="outline"
-                  size="sm"
-                  asChild
-                  className="bg-purple-50/50 dark:bg-transparent border border-purple-600/50 dark:border-purple-500/30 text-purple-700 dark:text-purple-400 hover:bg-purple-100 dark:hover:bg-purple-500/10 text-xs sm:text-sm font-mono transition-all"
-                >
-                  <Link
-                    href="https://drive.google.com/file/d/1wz3VXbYfBKaWXc-_rTtE4ib-IXuhcAh3/view?usp=sharing"
-                    target="_blank"
-                  >
-                    <Download className="w-3 sm:w-4 h-3 sm:h-4 mr-1 sm:mr-2" />
-                    Resume
-                  </Link>
-                </Button>
-
-                <Button
-                  variant="outline"
-                  size="sm"
-                  asChild
-                  className="bg-blue-50/50 dark:bg-transparent border border-blue-500/50 dark:border-blue-400/30 text-blue-700 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-400/10 text-xs sm:text-sm font-mono transition-all"
-                >
-                  <Link
-                    href="https://t.me/lets_share_tech"
-                    target="_blank"
-                  >
-                    <Send className="w-3 sm:w-4 h-3 sm:h-4 mr-1 sm:mr-2" />
-                    Join "Lets Share"
-                  </Link>
-                </Button>
-                <audio
-                  ref={audioRef}
-                  src="/Chill Pulse - Office Jam (freetouse.com).mp3"
-                  onEnded={() => setIsPlaying(false)}
+        {/* HERO SECTION — Clean, Human-made, No gradients */}
+        <section id="hero" className="pt-2 sm:pt-4">
+          <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-8 md:gap-10">
+            {/* Profile Avatar */}
+            <div className="relative shrink-0">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border border-neutral-200 dark:border-neutral-700 shadow-sm bg-neutral-100 dark:bg-neutral-800">
+                <Image
+                  src="/profile.png"
+                  alt="Ermias Teklemarkos"
+                  width={256}
+                  height={256}
+                  priority
+                  className="w-full h-full object-cover"
                 />
               </div>
 
-              {/* Social */}
-              <div className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 pt-4">
+              {/* Status indicator */}
+              <div
+                className="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white dark:border-[#151619]"
+                title="Available for opportunities"
+              />
+            </div>
 
-                <Link
-                  href="mailto:ermiasteklemarkos@gmail.com"
-                  className="flex items-center gap-2 text-xs sm:text-sm text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors font-mono"
-                >
-                  <Mail className="w-3 sm:w-4 h-3 sm:h-4" />
-                  Email
-                </Link>
+            {/* Greeting & Headline */}
+            <div className="flex-1 space-y-3">
+              <div className="flex flex-wrap items-center gap-2 text-xs font-medium text-neutral-500 dark:text-neutral-400">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                  Available for new roles
+                </span>
+                <span>•</span>
+                <span className="inline-flex items-center gap-1">
+                  <MapPin className="w-3 h-3" /> Addis Ababa, Ethiopia
+                </span>
+              </div>
 
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 leading-[1.15]">
+                Hello, I am Ermias.
+                <span className="block text-neutral-600 dark:text-neutral-400 font-medium text-2xl sm:text-3xl md:text-4xl mt-1">
+                  A Software Engineer.
+                </span>
+              </h1>
+
+              <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base leading-relaxed max-w-2xl">
+                Backend-focused full-stack software engineer with 2+ years of professional experience building fintech and agritech microservices and RESTful APIs with Node.js and FastAPI.
+              </p>
+
+              {/* Action Buttons — Clean, Human-made, No gradients */}
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <Button asChild size="default" className="rounded-full">
+                  <Link href="#contact">
+                    Contact me
+                    <ArrowUpRight className="w-4 h-4 ml-1" />
+                  </Link>
+                </Button>
+
+                <Button asChild variant="outline" size="default" className="rounded-full">
+                  <Link href={resumeUrl} target="_blank" rel="noopener noreferrer">
+                    Resume
+                    <ArrowUpRight className="w-4 h-4 ml-1" />
+                  </Link>
+                </Button>
+
+                <Button asChild variant="ghost" size="default" className="rounded-full">
+                  <Link href="#projects">
+                    View work
+                    <ArrowUpRight className="w-4 h-4 ml-1" />
+                  </Link>
+                </Button>
+
+                {/* Subtle Music Player */}
+                {mounted && (
+                  <button
+                    onClick={toggleMusic}
+                    className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-neutral-200 dark:border-neutral-800 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors ml-auto sm:ml-0"
+                    title={isPlaying ? "Pause music" : "Play subtle background music"}
+                  >
+                    <Music className={`w-3.5 h-3.5 ${isPlaying ? "music-wiggle-active text-neutral-900 dark:text-white" : ""}`} />
+                    <span className="hidden sm:inline">{isPlaying ? "Pause music" : "Office Jam"}</span>
+                    {isPlaying ? <Square className="w-3 h-3 fill-current" /> : <Play className="w-3 h-3 fill-current" />}
+                    {isPlaying && (
+                      <div className="flex items-end h-3 gap-0.5">
+                        <div className="wave-bar h-2" />
+                        <div className="wave-bar h-3" />
+                        <div className="wave-bar h-2" />
+                      </div>
+                    )}
+                  </button>
+                )}
+              </div>
+
+              {/* Social Quick Links */}
+              <div className="flex items-center gap-4 pt-1 text-xs text-neutral-500 dark:text-neutral-400">
                 <Link
                   href="https://linkedin.com/in/ermias-tekilemarkos"
-                  className="flex items-center gap-2 text-xs sm:text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-mono"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors inline-flex items-center gap-1"
                 >
-                  <Linkedin className="w-3 sm:w-4 h-3 sm:h-4" />
+                  <Linkedin className="w-3.5 h-3.5" />
                   LinkedIn
                 </Link>
-
+                <span>•</span>
                 <Link
                   href="https://github.com/ermi-tekk21"
-                  className="flex items-center gap-2 text-xs sm:text-sm text-gray-500 hover:text-purple-600 dark:hover:text-purple-400 transition-colors font-mono"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors inline-flex items-center gap-1"
                 >
-                  <Github className="w-3 sm:w-4 h-3 sm:h-4" />
+                  <Github className="w-3.5 h-3.5" />
                   GitHub
                 </Link>
-
+                <span>•</span>
+                <Link
+                  href="mailto:ermiasteklemarkos@gmail.com"
+                  className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors inline-flex items-center gap-1"
+                >
+                  <Mail className="w-3.5 h-3.5" />
+                  Email
+                </Link>
+                <span>•</span>
                 <Link
                   href="https://t.me/Tek_jeremy_x03"
                   target="_blank"
-                  className="flex items-center gap-2 text-xs sm:text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-mono"
+                  rel="noopener noreferrer"
+                  className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors inline-flex items-center gap-1"
                 >
-                  <Send className="w-3 sm:w-4 h-3 sm:h-4" />
+                  <Send className="w-3.5 h-3.5" />
                   Telegram
                 </Link>
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* RIGHT IMAGE */}
-            <div className="flex justify-center lg:justify-end w-full lg:w-auto">
-              <div className="relative group w-48 sm:w-64 md:w-80 lg:w-96">
+        {/* 2-COLUMN SECTION: ABOUT ME + PAST EXPERIENCE (matching BRIX Simple Portfolio screenshot) */}
+        <section className="grid grid-cols-1 md:grid-cols-12 gap-10 sm:gap-12 pt-6 border-t border-neutral-100 dark:border-neutral-800/80">
 
-                <div className="absolute -inset-2 sm:-inset-3 md:-inset-4 bg-gradient-to-r from-green-500 to-purple-600 rounded-full blur-xl sm:blur-2xl opacity-10 dark:opacity-25 group-hover:opacity-40 transition-opacity"></div>
+          {/* LEFT: About Me */}
+          <div id="about" className="md:col-span-5 space-y-4">
+            <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+              About me
+            </h2>
 
-                <Image
-                  src="/profile.png"
-                  alt="Ermias Teklemarkos"
-                  width={900}
-                  height={900}
-                  className="relative rounded-full aspect-square object-cover shadow-xl sm:shadow-2xl border-2 sm:border-4 border-gray-200 dark:border-white/10 group-hover:scale-105 transition-transform duration-300 w-full"
-                />
-
-                {/* Music Overlay */}
-                {mounted && (
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 px-4 py-2 bg-white/80 dark:bg-black/60 backdrop-blur-md rounded-full border border-gray-200 dark:border-white/10 shadow-lg z-20">
-                    <button
-                      onClick={toggleMusic}
-                      className="p-1.5 bg-yellow-500 rounded-full hover:bg-yellow-400 transition-colors text-black flex items-center gap-1.5"
-                      title={isPlaying ? "Stop Music" : "Play Music"}
-                    >
-                      <Music className={`w-3.5 h-3.5 ${isPlaying ? 'music-wiggle-active' : ''}`} />
-                      {isPlaying ? <Square className="w-3.5 h-3.5 fill-current" /> : <Play className="w-3.5 h-3.5 fill-current" />}
-                    </button>
-
-                    <div className="flex items-end h-6 gap-0.5">
-                      {[0.1, 0.3, 0.2, 0.4, 0.15].map((delay, i) => (
-                        <div
-                          key={i}
-                          className="wave-bar"
-                          style={{
-                            animationPlayState: isPlaying ? 'running' : 'paused',
-                            animationDelay: `${delay}s`,
-                            height: `${[14, 18, 15, 20, 13][i]}px`
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
+            <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              <p>
+                Backend-focused full-stack software engineer with 2+ years of professional experience (plus internships) building fintech and agritech microservices and RESTful APIs with Node.js (NestJS, Express.js) and FastAPI.
+              </p>
+              <p>
+                Experienced with event-driven architecture (Kafka, RabbitMQ), PostgreSQL, MongoDB, Docker-based CI/CD, and building modern frontends with React and Next.js, and currently exploring and learning ML-focused Data Science.
+              </p>
             </div>
 
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-[#080e1f] overflow-hidden">
-
-        {/* Background */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,150,0.05),transparent)]"></div>
-
-        <div className="max-w-7xl mx-auto relative z-10">
-
-          {/* Header */}
-          <div className="text-center mb-12 sm:mb-16 space-y-4">
-            <h2 className="text-3xl sm:text-4xl font-bold font-mono text-green-400">
-              {"About Me"}
-            </h2>
-
-            <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-sm sm:text-base md:text-lg font-mono leading-relaxed">
-              Backend-focused full-stack engineer with 3+ years of experience building scalable microservices and RESTful APIs.
-              Strong in Node.js (NestJS, Express), FastAPI, and event-driven architectures.
-              <br /><br />
-              Experienced in designing scalable systems using relational and NoSQL databases, CI/CD pipelines, and Docker-based deployments.
-              Also building modern frontends with React, Next.js, and Tailwind — currently exploring ML-driven data science.
-            </p>
+            <div className="pt-2">
+              <Link
+                href="#contact"
+                className="text-sm font-medium text-neutral-900 dark:text-neutral-100 hover:underline inline-flex items-center gap-1"
+              >
+                Get in touch
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </div>
 
-          {/* Cards */}
-         
-        </div>
-      </section>
+          {/* RIGHT: Past Experience */}
+          <div id="experience" className="md:col-span-7 space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+                Work experience
+              </h2>
+              <span className="text-xs text-neutral-500 dark:text-neutral-400">
+                2+ years professional
+              </span>
+            </div>
 
-      {/* Experience Section */}
-      <section id="experience" className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-black overflow-hidden">
-
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold font-mono text-green-400">
-              {"Experience"}
-            </h2>
-          </div>
-
-          <div className="space-y-6 sm:space-y-8">
-            {experiences.map((exp, index) => (
-              <Card key={index} className="border border-green-500/20 bg-white/80 dark:bg-black/60 backdrop-blur hover:border-green-400/40 transition-all hover:shadow-[0_0_25px_rgba(0,255,150,0.1)]">
-
-                <CardHeader>
-                  <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
-
-                    <div className="flex items-center gap-4">
-                      <Briefcase className="w-6 h-6 text-green-400" />
-                      <div>
-                        <CardTitle className="text-lg sm:text-xl font-mono text-gray-900 dark:text-white">
-                          {exp.role}
-                        </CardTitle>
-                        <CardDescription className="text-gray-600 dark:text-gray-400 font-mono">
-                          {exp.company}
-                        </CardDescription>
-                      </div>
+            <div className="space-y-6">
+              {experiences.map((exp, index) => (
+                <div key={index} className="space-y-2 border-b border-neutral-100 dark:border-neutral-800/60 pb-5 last:border-0 last:pb-0">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                    <div>
+                      <h3 className="text-base font-semibold text-neutral-900 dark:text-neutral-100">
+                        {exp.role}
+                      </h3>
+                      <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                        {exp.company} • <span className="text-xs text-neutral-500">{exp.location}</span>
+                      </p>
                     </div>
-
-                    <span className="text-xs sm:text-sm text-green-500 font-mono">
+                    <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400 shrink-0">
                       {exp.date}
                     </span>
                   </div>
-                </CardHeader>
 
-                <CardContent>
-                  <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400 font-mono">
-                    {exp.description.map((desc, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-green-400">{">"}</span>
-                        {desc}
+                  <ul className="space-y-1.5 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed pt-1">
+                    {exp.description.map((bullet, bIdx) => (
+                      <li key={bIdx} className="flex items-start gap-2">
+                        <span className="text-neutral-400 dark:text-neutral-500 mt-1.5 w-1 h-1 rounded-full bg-neutral-400 shrink-0" />
+                        <span>{bullet}</span>
                       </li>
                     ))}
                   </ul>
-                </CardContent>
 
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="education" className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-[#080e1f] overflow-hidden">
-
-        {/* Background */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-
-        <div className="max-w-7xl mx-auto relative z-10">
-
-          {/* Header */}
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold font-mono text-purple-400">
-              {"Education & Certifications"}
-            </h2>
-            
-          </div>
-
-          <div className="space-y-8">
-
-            {/* Main Degree */}
-            <Card className="border border-purple-500/20 bg-white/80 dark:bg-black/60 backdrop-blur hover:border-purple-400/40 transition-all">
-
-              <CardHeader>
-                <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
-
-                  <div className="flex items-center gap-4">
-                    <GraduationCap className="w-6 h-6 text-purple-400" />
-                    <div>
-                      <CardTitle className="text-lg sm:text-xl font-mono text-gray-900 dark:text-white">
-                        BSc in Software Engineering
-                      </CardTitle>
-                      <CardDescription className="text-gray-600 dark:text-gray-400 font-mono">
-                        Adama Science and Technology University
-                      </CardDescription>
-                    </div>
+                  {/* Micro Stack Tags */}
+                  <div className="flex flex-wrap gap-1.5 pt-1.5">
+                    {exp.stack.map((item) => (
+                      <span
+                        key={item}
+                        className="text-[11px] px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 font-normal"
+                      >
+                        {item}
+                      </span>
+                    ))}
                   </div>
-
-                  <span className="text-sm text-purple-400 font-mono">
-                    Sep 2020 — Jun 2025
-                  </span>
-
                 </div>
-              </CardHeader>
+              ))}
+            </div>
+          </div>
+        </section>
 
-              <CardContent>
-                <p className="text-sm text-gray-600 dark:text-gray-400 font-mono leading-relaxed">
-                  {"// Core Focus"}
-                  <br />
-                  Full-Stack Development • Database Systems • Algorithms • Machine Learning • Artificial Intelligence
-                </p>
-              </CardContent>
-
-            </Card>
-
-            {/* Certifications Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
-              {/* ALX Software Engineering */}
-              <Card className="border border-green-500/20 bg-white/80 dark:bg-black/60 backdrop-blur hover:border-green-400/40 transition-all">
-
-                <CardHeader>
-                  <div className="flex items-start gap-3">
-                    <Award className="w-5 h-5 text-green-400" />
-                    <div>
-                      <CardTitle className="text-base sm:text-lg font-mono text-gray-900 dark:text-white">
-                        ALX Software Engineering Program
-                      </CardTitle>
-                      <CardDescription className="text-gray-600 dark:text-gray-400 font-mono text-sm">
-                        Jan 2023 — Jul 2024
-                      </CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-
-                <CardContent className="space-y-4">
-                  <p className="text-sm text-gray-600 dark:text-gray-400 font-mono">
-                    Completed a 12-month intensive program focused on backend engineering,
-                    system design, and real-world software development.
-                  </p>
-
-                  <Button asChild size="sm" variant="outline" className="w-full font-mono bg-green-50/50 dark:bg-transparent border border-green-600/50 dark:border-green-500/30 text-green-700 dark:text-green-400 hover:bg-green-100 dark:hover:bg-green-500/10 transition-all">
-                    <Link href="https://savanna.alxafrica.com/certificates/eJSHf2XsEz" target="_blank">
-                      View Certificate
-                    </Link>
-                  </Button>
-                </CardContent>
-
-              </Card>
-
-              {/* ALX Ventures */}
-              <Card className="border border-purple-500/20 bg-white/80 dark:bg-black/60 backdrop-blur hover:border-purple-400/40 transition-all">
-
-                <CardHeader>
-                  <div className="flex items-start gap-3">
-                    <Award className="w-5 h-5 text-purple-400" />
-                    <div>
-                      <CardTitle className="text-base sm:text-lg font-mono text-gray-900 dark:text-white">
-                        ALX Ventures Founders Academy
-                      </CardTitle>
-                      <CardDescription className="text-gray-600 dark:text-gray-400 font-mono text-sm">
-                        May 2024 — Jul 2024
-                      </CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-
-                <CardContent className="space-y-4">
-                  <p className="text-sm text-gray-600 dark:text-gray-400 font-mono">
-                    Focused on entrepreneurship, product thinking, and leadership in building impactful ventures.
-                  </p>
-
-                  <Button asChild size="sm" variant="outline" className="w-full font-mono bg-purple-50/50 dark:bg-transparent border border-purple-600/50 dark:border-purple-500/30 text-purple-700 dark:text-purple-400 hover:bg-purple-100 dark:hover:bg-purple-500/10 transition-all">
-                    <Link href="https://savanna.alxafrica.com/certificates/hcPHpY72mx" target="_blank">
-                      View Certificate
-                    </Link>
-                  </Button>
-                </CardContent>
-
-              </Card>
-
-              {/* National Science Fair */}
-              <Card className="border border-yellow-500/20 bg-white/80 dark:bg-black/60 backdrop-blur hover:border-yellow-400/40 transition-all">
-
-                <CardHeader>
-                  <div className="flex items-start gap-3">
-                    <Award className="w-5 h-5 text-yellow-400" />
-                    <div>
-                      <CardTitle className="text-base sm:text-lg font-mono text-gray-900 dark:text-white">
-                        National Science Fair Competition
-                      </CardTitle>
-                      <CardDescription className="text-gray-600 dark:text-gray-400 font-mono text-sm">
-                        November 2018
-                      </CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-
-                <CardContent className="space-y-4">
-                  <p className="text-sm text-gray-600 dark:text-gray-400 font-mono">
-                    Participated in a national-level competition organized by MoE, UNESCO, and Ministry of Innovation.
-                  </p>
-
-                  <Button asChild size="sm" variant="outline" className="w-full font-mono bg-yellow-50/50 dark:bg-transparent border border-yellow-600/50 dark:border-yellow-500/30 text-yellow-700 dark:text-yellow-400 hover:bg-yellow-100 dark:hover:bg-yellow-500/10 transition-all">
-                    <Link href="https://www.linkedin.com/in/ermias-tekilemarkos/details/certifications/1729429628737/single-media-viewer/?profileId=ACoAAECF_iEBfBQDBf7CMtySAf_u2AhuqyjV_pE" target="_blank">
-                      View Certificate
-                    </Link>
-                  </Button>
-                </CardContent>
-
-              </Card>
-
-              {/* Web Bootcamp */}
-              <Card className="border border-blue-500/20 bg-white/80 dark:bg-black/60 backdrop-blur hover:border-blue-400/40 transition-all">
-
-                <CardHeader>
-                  <div className="flex items-start gap-3">
-                    <Award className="w-5 h-5 text-blue-400" />
-                    <div>
-                      <CardTitle className="text-base sm:text-lg font-mono text-gray-900 dark:text-white">
-                        Advanced Web Development Bootcamp
-                      </CardTitle>
-                      <CardDescription className="text-gray-600 dark:text-gray-400 font-mono text-sm">
-                        CSECASTU
-                      </CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-
-                <CardContent className="space-y-4">
-                  <p className="text-sm text-gray-600 dark:text-gray-400 font-mono">
-                    Completed advanced training in modern web development practices and tools.
-                  </p>
-
-                  <Button asChild size="sm" variant="outline" className="w-full font-mono bg-blue-50/50 dark:bg-transparent border border-blue-600/50 dark:border-blue-500/30 text-blue-700 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-500/10 transition-all">
-                    <Link href="https://www.linkedin.com/in/ermias-tekilemarkos/details/certifications/1729430251294/single-media-viewer/?profileId=ACoAAECF_iEBfBQDBf7CMtySAf_u2AhuqyjV_pE" target="_blank">
-                      View Certificate
-                    </Link>
-                  </Button>
-                </CardContent>
-
-              </Card>
-
+        {/* PORTFOLIO / PROJECTS SECTION */}
+        <section id="projects" className="pt-6 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+                Featured projects
+              </h2>
+              <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+                Fintech services, distributed microservices, web applications, and machine learning.
+              </p>
             </div>
 
-            {/* Achievement (Highlight Card) */}
-            <Card className="border border-yellow-500/30 bg-white dark:bg-black/70 backdrop-blur hover:border-yellow-400/50 transition-all shadow-[0_0_30px_rgba(255,200,0,0.1)]">
+            {/* Category Filter Tabs */}
+            <div className="flex flex-wrap gap-1.5 p-1 bg-neutral-100 dark:bg-neutral-800/70 rounded-full w-fit">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`text-xs px-3 py-1 rounded-full font-medium transition-all ${activeCategory === cat
+                    ? "bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 shadow-xs"
+                    : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"
+                    }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
 
-              <CardHeader>
-                <div className="flex items-start gap-4">
-                  <Award className="w-6 h-6 text-yellow-400" />
+          {/* Project Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+            {filteredProjects.map((project, index) => (
+              <div
+                key={index}
+                className="group flex flex-col justify-between p-5 sm:p-6 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 hover:bg-white dark:hover:bg-neutral-900 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all space-y-4"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <span className="text-[11px] font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider block mb-1">
+                        {project.badge}
+                      </span>
+                      <h3 className="text-base sm:text-lg font-semibold text-neutral-900 dark:text-neutral-100 leading-snug">
+                        {project.title}
+                      </h3>
+                    </div>
+                    {project.internalUse ? (
+                      <span
+                        className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-neutral-200/70 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 inline-flex items-center gap-1 shrink-0"
+                        title="Internal Enterprise System"
+                      >
+                        <Lock className="w-2.5 h-2.5" />
+                        Internal
+                      </span>
+                    ) : (
+                      <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 inline-flex items-center gap-1 shrink-0">
+                        Public
+                      </span>
+                    )}
+                  </div>
 
-                  <div>
-                    <CardTitle className="text-lg sm:text-xl font-mono text-gray-900 dark:text-white">
-                      ALX SE Achievement — Tutor Recognition
-                    </CardTitle>
-                    <CardDescription className="text-gray-600 dark:text-gray-400 font-mono">
-                      Certificate of Achievement & Letter of Recommendation
-                    </CardDescription>
+                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  {/* Figma Embed if UX/UI */}
+                  {project.figmaEmbed && (
+                    <div
+                      className="pt-2 overflow-hidden rounded-xl"
+                      dangerouslySetInnerHTML={{ __html: project.figmaEmbed }}
+                    />
+                  )}
+                </div>
+
+                <div className="space-y-3 pt-2">
+                  {/* Tech stack badges */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="text-[11px] px-2 py-0.5 rounded-md bg-white dark:bg-neutral-800 border border-neutral-200/80 dark:border-neutral-700/80 text-neutral-600 dark:text-neutral-300"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Action links */}
+                  <div className="flex items-center gap-3 pt-1 text-xs font-medium">
+                    {project.liveUrl && (
+                      <Link
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-neutral-900 dark:text-neutral-100 hover:underline inline-flex items-center gap-1"
+                      >
+                        Live Demo
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </Link>
+                    )}
+                    {project.apiDocsUrl && (
+                      <Link
+                        href={project.apiDocsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-neutral-900 dark:text-neutral-100 hover:underline inline-flex items-center gap-1"
+                      >
+                        API Docs
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </Link>
+                    )}
+                    {project.githubUrl && (
+                      <Link
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-neutral-900 dark:text-neutral-100 hover:underline inline-flex items-center gap-1"
+                      >
+                        Source Code
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </Link>
+                    )}
+                    {project.internalUse && !project.liveUrl && (
+                      <span className="text-neutral-500 text-[11px]">
+                        Enterprise deployment & confidential repo
+                      </span>
+                    )}
                   </div>
                 </div>
-              </CardHeader>
-
-              <CardContent className="space-y-4 font-mono text-sm text-gray-600 dark:text-gray-400">
-
-                <p>
-                  Recognized for outstanding contribution as a Software Engineering Tutor.
-                </p>
-
-                <ul className="space-y-2">
-                  <li className="flex gap-2">
-                    <span className="text-yellow-400">{">"}</span>
-                    Mentored students through portfolio projects and real-world engineering challenges
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-yellow-400">{">"}</span>
-                    Demonstrated leadership, collaboration, and deep technical guidance
-                  </li>
-                </ul>
-
-                <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                  <Button asChild size="sm" className="flex-1 font-mono bg-yellow-500 text-black hover:bg-yellow-400 shadow-lg shadow-yellow-500/20 dark:shadow-none transition-all">
-                    <Link href="https://drive.google.com/file/d/136RIcHt6dUg0B7f6JAiMF1CRTVfJVpBy/view" target="_blank">
-                      View Recommendation
-                    </Link>
-                  </Button>
-
-                  <Button asChild size="sm" variant="outline" className="flex-1 font-mono bg-yellow-50/50 dark:bg-transparent border border-yellow-600/50 dark:border-yellow-500/40 text-yellow-700 dark:text-yellow-400 hover:bg-yellow-100 dark:hover:bg-yellow-500/10 transition-all">
-                    <Link href="https://drive.google.com/file/d/1XJdvb-Bdig6TCQ5l6BBKhT2Vp2EhVjfb/view" target="_blank">
-                      View Certificate
-                    </Link>
-                  </Button>
-                </div>
-
-              </CardContent>
-
-            </Card>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section id="skills" className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-black">
-
-        <div className="max-w-7xl mx-auto">
-
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold font-mono text-green-400">
-              {"Tech Stack"}
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            {Object.entries(skills).map(([category, skillList]) => (
-              <Card key={category} className="border border-green-500/20 bg-white/80 dark:bg-black/60 backdrop-blur">
-
-                <CardHeader>
-                  <CardTitle className="font-mono text-green-400 text-lg">
-                    $ {category.toLowerCase()}
-                  </CardTitle>
-                </CardHeader>
-
-                <CardContent className="flex flex-wrap gap-2">
-                  {skillList.map((skill) => (
-                    <span key={skill} className="text-xs font-mono text-gray-600 dark:text-gray-400 border border-green-500/20 px-2 py-1 rounded">
-                      {skill}
-                    </span>
-                  ))}
-                </CardContent>
-
-              </Card>
+              </div>
             ))}
-
           </div>
+        </section>
 
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-[#080e1f]">
-
-        <div className="max-w-7xl mx-auto">
-
-          {/* Header */}
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold font-mono text-purple-400">
-              {"Featured Projects"}
+        {/* SKILLS & TECHNOLOGIES SECTION */}
+        <section id="skills" className="pt-6 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6">
+          <div>
+            <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+              Skills & technologies
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base md:text-lg mt-2 font-mono">
-              A showcase of work across web development, machine learning, and UX/UI design.
+            <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+              Core technologies, system architecture patterns, and engineering practices from production experience.
             </p>
           </div>
 
-          {/* Web App Projects */}
-          <div className="mb-12 sm:mb-16 md:mb-20">
-            <div className="flex items-center gap-3 sm:gap-4 mb-8 sm:mb-12">
-              <div className="p-2 sm:p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl">
-                <Code className="w-6 sm:w-8 h-6 sm:h-8 text-white" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {skillGroups.map((group, idx) => (
+              <div
+                key={idx}
+                className="p-4 sm:p-5 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/40 dark:bg-neutral-900/30 space-y-3"
+              >
+                <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+                  {group.title}
+                </h3>
+                <div className="flex flex-wrap gap-1.5">
+                  {group.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="text-xs px-2.5 py-1 rounded-full bg-white dark:bg-neutral-800 border border-neutral-200/80 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 font-medium"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold font-mono text-gray-900 dark:text-white">Web Applications</h3>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {webAppProjects.map((project, index) => (
-                <Card
-                  key={index}
-                  className="group border border-blue-500/20 bg-white/80 dark:bg-black/60 backdrop-blur hover:border-blue-400/40 hover:shadow-xl hover:-translate-y-2 transition-all"
-                >
-                  <CardHeader>
-                    <CardTitle className="flex items-center justify-between gap-2 text-base sm:text-lg font-mono text-gray-900 dark:text-white">
-                      <span className="group-hover:text-blue-400 transition-colors">{project.title}</span>
-                      <span className="shrink-0 text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30 shadow-[0_0_8px_rgba(59,130,246,0.2)] tracking-wide uppercase">
-                        {project.category}
-                      </span>
-                    </CardTitle>
-                    <CardDescription className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm leading-relaxed font-mono">
-                      {project.description}
-                    </CardDescription>
-                  </CardHeader>
-
-                  <CardContent className="space-y-3 sm:space-y-4">
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech: string) => (
-                        <Badge key={tech} variant="secondary" className="text-xs font-mono">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-
-                    <div className="flex flex-col gap-2">
-                      {project.liveUrl && (
-                        <Button asChild size="sm" className="w-full text-sm font-mono py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white shadow-lg shadow-blue-500/20 dark:shadow-none transition-all">
-                          <Link href={project.liveUrl} target="_blank">
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            Live Demo
-                          </Link>
-                        </Button>
-                      )}
-                      {project.githubUrl && (
-                        <Button asChild variant="outline" size="sm" className="w-full text-sm font-mono py-2 bg-blue-50/50 dark:bg-transparent border border-blue-600/50 dark:border-blue-400/30 text-blue-700 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-500/10 transition-all">
-                          <Link href={project.githubUrl} target="_blank">
-                            <Github className="w-4 h-4 mr-2" />
-                            Code
-                          </Link>
-                        </Button>
-                      )}
-                      {project.internalUse && (
-                        <Button variant="secondary" size="sm" className="w-full text-sm font-mono py-2 cursor-default hover:bg-secondary">
-                          <Lock className="w-4 h-4 mr-2" />
-                          Company Internal
-                        </Button>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            ))}
           </div>
+        </section>
 
-          {/* ML & AI Projects */}
-          <div className="mb-12 sm:mb-16 md:mb-20">
-            <div className="flex items-center gap-3 sm:gap-4 mb-8 sm:mb-12">
-              <div className="p-2 sm:p-3 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl">
-                <Brain className="w-6 sm:w-8 h-6 sm:h-8 text-white" />
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-bold font-mono text-gray-900 dark:text-white">Machine Learning & AI</h3>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-              {mlAiProjects.map((project, index) => (
-                <Card
-                  key={index}
-                  className="group border border-green-500/20 bg-white/80 dark:bg-black/60 backdrop-blur hover:border-green-400/40 hover:shadow-xl hover:-translate-y-2 transition-all"
-                >
-                  <CardHeader>
-                    <CardTitle className="flex items-center justify-between gap-2 text-base sm:text-lg font-mono text-gray-900 dark:text-white">
-                      <span className="group-hover:text-green-400 transition-colors">{project.title}</span>
-                      <span className="shrink-0 text-xs font-semibold px-2.5 py-1 rounded-full bg-green-500/10 text-green-400 border border-green-500/30 shadow-[0_0_8px_rgba(34,197,94,0.2)] tracking-wide uppercase">
-                        {project.category}
-                      </span>
-                    </CardTitle>
-                    <CardDescription className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm leading-relaxed font-mono">
-                      {project.description}
-                    </CardDescription>
-                  </CardHeader>
-
-                  <CardContent className="space-y-3 sm:space-y-4">
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech: string) => (
-                        <Badge key={tech} variant="secondary" className="text-xs font-mono">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-
-                    <div className="flex flex-col gap-2">
-                      {project.liveUrl && (
-                        <Button asChild size="sm" className="w-full text-sm font-mono py-2 bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white shadow-lg shadow-green-500/20 dark:shadow-none transition-all">
-                          <Link href={project.liveUrl} target="_blank">
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            Live Demo
-                          </Link>
-                        </Button>
-                      )}
-                      {project.githubUrl && (
-                        <Button asChild variant="outline" size="sm" className="w-full text-sm font-mono py-2 bg-green-50/50 dark:bg-transparent border border-green-600/50 dark:border-green-400/30 text-green-700 dark:text-green-400 hover:bg-green-100 dark:hover:bg-green-500/10 transition-all">
-                          <Link href={project.githubUrl} target="_blank">
-                            <Github className="w-4 h-4 mr-2" />
-                            Code
-                          </Link>
-                        </Button>
-                      )}
-                      {project.internalUse && (
-                        <Button variant="secondary" size="sm" className="w-full text-sm font-mono py-2 cursor-default hover:bg-secondary">
-                          <Lock className="w-4 h-4 mr-2" />
-                          Company Internal
-                        </Button>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* UX/UI Projects */}
+        {/* EDUCATION & CERTIFICATIONS SECTION */}
+        <section id="education" className="pt-6 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6">
           <div>
-            <div className="flex items-center gap-3 sm:gap-4 mb-8 sm:mb-12">
-              <div className="p-2 sm:p-3 bg-gradient-to-r from-pink-500 to-rose-500 rounded-xl">
-                <Palette className="w-6 sm:w-8 h-6 sm:h-8 text-white" />
+            <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+              Education & certifications
+            </h2>
+            <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+              Formal software engineering degree and verified certifications.
+            </p>
+          </div>
+
+          {/* ASTU Degree Card */}
+          <div className="p-5 sm:p-6 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 space-y-2">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <div>
+                <h3 className="text-base sm:text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+                  B.Sc. in Software Engineering
+                </h3>
+                <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                  Adama Science & Technology University (ASTU)
+                </p>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold font-mono text-gray-900 dark:text-white">UX/UI Design</h3>
+              <span className="text-xs font-medium text-neutral-500">
+                09/2021 – 07/2025
+              </span>
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-              {uxUiProjects.map((project, index) => (
-                <Card
-                  key={index}
-                  className="group border border-pink-500/20 bg-white/80 dark:bg-black/60 backdrop-blur hover:border-pink-400/40 hover:shadow-xl hover:-translate-y-2 transition-all"
-                >
-                  <CardHeader>
-                    <CardTitle className="flex items-center justify-between gap-2 text-base sm:text-lg font-mono text-gray-900 dark:text-white">
-                      <span className="group-hover:text-pink-400 transition-colors">{project.title}</span>
-                      <span className="shrink-0 text-xs font-semibold px-2.5 py-1 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/30 shadow-[0_0_8px_rgba(236,72,153,0.2)] tracking-wide uppercase">
-                        {project.category}
-                      </span>
-                    </CardTitle>
-                    <CardDescription className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm leading-relaxed font-mono">
-                      {project.description}
-                    </CardDescription>
-                  </CardHeader>
-
-                  <CardContent className="space-y-3 sm:space-y-4">
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech: string) => (
-                        <Badge key={tech} variant="secondary" className="text-xs font-mono">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-
-                    <div
-                      className="w-full rounded-lg overflow-hidden border border-gray-700"
-                      dangerouslySetInnerHTML={{ __html: project.figmaEmbed }}
-                    />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed pt-1">
+              Focused on software development, algorithms, data structures, and practical projects in fullstack, backend, and ML engineering.
+            </p>
           </div>
 
-        </div>
-      </section>
+          {/* Certifications Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {certifications.map((cert, idx) => (
+              <div
+                key={idx}
+                className="p-4 sm:p-5 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/40 dark:bg-neutral-900/30 flex flex-col justify-between space-y-3"
+              >
+                <div>
+                  <div className="flex items-baseline justify-between gap-2">
+                    <h4 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+                      {cert.title}
+                    </h4>
+                    <span className="text-[11px] text-neutral-400 dark:text-neutral-500 shrink-0">
+                      {cert.date}
+                    </span>
+                  </div>
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                    {cert.issuer}
+                  </p>
+                  <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-2 leading-relaxed">
+                    {cert.description}
+                  </p>
+                </div>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-[#080e1f] text-center">
+                <div className="flex items-center gap-3 pt-2 text-xs font-medium">
+                  <Link
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-neutral-900 dark:text-neutral-100 hover:underline inline-flex items-center gap-1"
+                  >
+                    {cert.linkText}
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </Link>
+                  {cert.secondaryLink && cert.secondaryLinkText && (
+                    <Link
+                      href={cert.secondaryLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-neutral-900 dark:text-neutral-100 hover:underline inline-flex items-center gap-1"
+                    >
+                      {cert.secondaryLinkText}
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
-        <h2 className="text-3xl sm:text-4xl font-bold font-mono text-green-400 mb-6">
-          {"Let's Build"}
-        </h2>
+        {/* CONTACT SECTION — Simple, Human, Inviting */}
+        <section id="contact" className="pt-6 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6">
+          <div className="max-w-xl space-y-2">
+            <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+              Let's connect
+            </h2>
+            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              I am open to software engineering opportunities, fintech backends, and collaborative engineering projects. Feel free to reach out directly.
+            </p>
+          </div>
 
-        <p className="text-gray-600 dark:text-gray-400 font-mono max-w-2xl mx-auto mb-10">
-          Open to opportunities, collaborations, and building impactful systems.
-          Let’s create something meaningful.
-        </p>
+          <div className="flex flex-wrap items-center gap-3">
+            <Button asChild size="default" className="rounded-full">
+              <Link href="mailto:ermiasteklemarkos@gmail.com">
+                <Mail className="w-4 h-4 mr-1.5" />
+                Send an email
+              </Link>
+            </Button>
 
-        <div className="flex flex-wrap justify-center gap-4">
+            <Button asChild variant="outline" size="default" className="rounded-full">
+              <Link href="https://linkedin.com/in/ermias-tekilemarkos" target="_blank" rel="noopener noreferrer">
+                <Linkedin className="w-4 h-4 mr-1.5" />
+                LinkedIn
+                <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
+              </Link>
+            </Button>
 
-          <Button variant="outline" asChild className="bg-green-50/50 dark:bg-transparent border border-green-600/50 dark:border-green-500/30 text-green-700 dark:text-green-400 font-mono hover:bg-green-100 dark:hover:bg-green-500/10 transition-all">
-            <Link href="https://linkedin.com/in/ermias-tekilemarkos">
-              LinkedIn
-            </Link>
-          </Button>
-          <Button asChild className="bg-green-500 text-black font-mono shadow-lg shadow-green-500/20 dark:shadow-none transition-all">
-            <Link href="mailto:ermiasteklemarkos@gmail.com">
-              Send Email
-            </Link>
-          </Button>
+            <Button asChild variant="outline" size="default" className="rounded-full">
+              <Link href="https://github.com/ermi-tekk21" target="_blank" rel="noopener noreferrer">
+                <Github className="w-4 h-4 mr-1.5" />
+                GitHub
+                <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
+              </Link>
+            </Button>
 
-          <Button variant="outline" asChild className="bg-green-50/50 dark:bg-transparent border border-green-600/50 dark:border-green-500/30 text-green-700 dark:text-green-400 font-mono hover:bg-green-100 dark:hover:bg-green-500/10 transition-all">
-            <Link href="https://github.com/ermi-tekk21">
-              GitHub
-            </Link>
-          </Button>
+            <Button asChild variant="outline" size="default" className="rounded-full">
+              <Link href="https://t.me/Tek_jeremy_x03" target="_blank" rel="noopener noreferrer">
+                <Send className="w-4 h-4 mr-1.5" />
+                Telegram
+                <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
+              </Link>
+            </Button>
 
-        </div>
+            <Button asChild variant="outline" size="default" className="rounded-full">
+              <Link href={resumeUrl} target="_blank" rel="noopener noreferrer">
+                Resume
+                <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
+              </Link>
+            </Button>
+          </div>
 
-      </section>
+          {/* Direct Details Box */}
+          <div className="p-4 sm:p-5 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/30 flex flex-wrap gap-y-2 gap-x-6 text-xs text-neutral-600 dark:text-neutral-400">
+            <div>
+              <span className="font-medium text-neutral-900 dark:text-neutral-100">Email: </span>
+              <a href="mailto:ermiasteklemarkos@gmail.com" className="hover:underline">ermiasteklemarkos@gmail.com</a>
+            </div>
+            <div>
+              <span className="font-medium text-neutral-900 dark:text-neutral-100">Phone: </span>
+              <a href="tel:+251948309786" className="hover:underline">+251 948 309 786</a>
+            </div>
+            <div>
+              <span className="font-medium text-neutral-900 dark:text-neutral-100">Location: </span>
+              <span>Addis Ababa, Ethiopia</span>
+            </div>
+          </div>
+        </section>
 
-      {/* Sticky Music Player */}
-      {mounted && (
-        <div
-          className={`fixed bottom-6 right-6 z-50 transition-all duration-500 transform ${
-            showStickyPlayer ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none"
-          }`}
+      </div>
+
+      {/* FLOATING BOTTOM DOCK — Inspired by BRIX Simple Portfolio Template Screenshot */}
+      <nav
+        aria-label="Floating navigation"
+        className="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md border border-neutral-200/90 dark:border-neutral-800 shadow-lg shadow-neutral-950/5 rounded-full px-2 sm:px-3 py-1.5 flex items-center gap-1 sm:gap-2 transition-all"
+      >
+        <Link
+          href="#hero"
+          className="p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          title="Home"
+          aria-label="Home"
         >
-          <div className="flex items-center gap-3 px-4 py-3 bg-white dark:bg-black/80 backdrop-blur-xl rounded-2xl border border-yellow-500/20 shadow-[0_0_30px_rgba(234,179,8,0.15)] group">
-            <div className="flex flex-col">
-              <span className="text-[10px] font-mono text-yellow-500/70 uppercase tracking-widest leading-none mb-1">Now Playing</span>
-              <span className="text-xs font-mono text-gray-900 dark:text-white font-medium truncate max-w-[120px]">Classical - Chill Pulse</span>
-            </div>
+          <Home className="w-4 h-4" />
+        </Link>
+        <Link
+          href="#about"
+          className="p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          title="About me"
+          aria-label="About me"
+        >
+          <User className="w-4 h-4" />
+        </Link>
+        <Link
+          href="#experience"
+          className="p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          title="Work experience"
+          aria-label="Work experience"
+        >
+          <Briefcase className="w-4 h-4" />
+        </Link>
+        <Link
+          href="#projects"
+          className="p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          title="Featured projects"
+          aria-label="Featured projects"
+        >
+          <Layers className="w-4 h-4" />
+        </Link>
+        <Link
+          href="#skills"
+          className="p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          title="Skills"
+          aria-label="Skills"
+        >
+          <Cpu className="w-4 h-4" />
+        </Link>
+        <Link
+          href="#education"
+          className="p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          title="Education & Certifications"
+          aria-label="Education & Certifications"
+        >
+          <GraduationCap className="w-4 h-4" />
+        </Link>
+        <Link
+          href="#contact"
+          className="p-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          title="Contact"
+          aria-label="Contact"
+        >
+          <Mail className="w-4 h-4" />
+        </Link>
 
-            <div className="flex items-end h-5 gap-0.5 mx-2">
-              {[0.1, 0.3, 0.2, 0.4, 0.15].map((delay, i) => (
-                <div
-                  key={i}
-                  className="wave-bar w-[2px]"
-                  style={{
-                    animationPlayState: isPlaying ? 'running' : 'paused',
-                    animationDelay: `${delay}s`,
-                    height: `${[12, 16, 14, 18, 11][i]}px`
-                  }}
-                />
-              ))}
-            </div>
+        <div className="w-[1px] h-4 bg-neutral-200 dark:bg-neutral-800 mx-1" />
 
-            <button
-              onClick={toggleMusic}
-              className="p-2 bg-yellow-500 rounded-xl hover:bg-yellow-400 transition-all hover:scale-105 active:scale-95 text-black shadow-lg flex items-center gap-1.5"
-            >
-              <Music className={`w-4 h-4 ${isPlaying ? 'music-wiggle-active' : ''}`} />
-              {isPlaying ? <Square className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current" />}
-            </button>
-          </div>
-        </div>
-      )}
+        {/* Music Player Button in Dock */}
+        <button
+          onClick={toggleMusic}
+          className={`p-2 rounded-full transition-colors ${isPlaying
+            ? "text-neutral-950 dark:text-white bg-neutral-100 dark:bg-neutral-800"
+            : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800"
+            }`}
+          title={isPlaying ? "Pause music" : "Play subtle background music"}
+          aria-label="Play or pause background music"
+        >
+          <Music className={`w-4 h-4 ${isPlaying ? "music-wiggle-active" : ""}`} />
+        </button>
+      </nav>
     </div>
   )
 }

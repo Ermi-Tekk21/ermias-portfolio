@@ -5,20 +5,20 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Navbar } from "@/components/navbar"
 import { Inter } from "next/font/google"
 import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
-  title: "Ermias Teklemarkos - Portfolio",
-  description: "Software Engineer | Full-Stack Developer | Exploring Data Science",
-  generator: "v0.dev",
+  title: "Ermias Teklemarkos — Software Engineer",
+  description: "Backend Focused Full-Stack Software Engineer building fintech and agritech microservices and RESTful APIs with Node.js and FastAPI.",
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
-    title: "Ermias Teklemarkos - Portfolio",
-    description: "Software Engineer | Full-Stack Developer | Exploring Data Science",
+    title: "Ermias Teklemarkos — Software Engineer",
+    description: "Backend Focused Full-Stack Software Engineer building fintech and agritech microservices and RESTful APIs with Node.js and FastAPI.",
     url: "https://ermias-teklemarkos-portfolio.vercel.app",
     siteName: "Ermias Teklemarkos Portfolio",
     images: [
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ermias Teklemarkos - Portfolio",
-    description: "Software Engineer | Full-Stack Developer | Exploring Data Science",
+    title: "Ermias Teklemarkos — Software Engineer",
+    description: "Backend Focused Full-Stack Software Engineer building fintech and agritech microservices and RESTful APIs with Node.js and FastAPI.",
     images: ["/og-image.jpg"],
   },
 }
@@ -45,40 +45,43 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const resumeUrl = "https://drive.google.com/file/d/1l28kgiCx8k1LetniY2NJM--kxrkKPd0b/view?usp=sharing"
+
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-pt-20">
-      <body className={`${inter.className} flex flex-col min-h-screen bg-white dark:bg-[#080e1f] text-gray-900 dark:text-gray-100 transition-colors duration-300`}>
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+      <body className={`${inter.className} min-h-screen flex flex-col bg-[#f4f5f7] dark:bg-[#0c0d10] text-neutral-900 dark:text-neutral-100 antialiased selection:bg-neutral-200 selection:text-neutral-900 dark:selection:bg-neutral-800 dark:selection:text-neutral-100`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} disableTransitionOnChange={false}>
           <Navbar />
-          <main className="flex-grow">{children}</main>
-          <footer className="w-full bg-gray-50 dark:bg-[#080e1f] border-t border-gray-200 dark:border-blue-900/30 text-gray-500 dark:text-gray-400 font-mono transition-colors duration-300">
-            <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+          <main className="flex-grow pt-16 pb-20">{children}</main>
+          
+          <footer className="w-full border-t border-neutral-200/80 dark:border-neutral-800/80 bg-white/60 dark:bg-[#111215]/60 text-neutral-500 dark:text-neutral-400 text-xs sm:text-sm">
+            <div className="container max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-6 mb-8">
+                <div>
+                  <Link
+                    href="#"
+                    className="text-base font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 hover:opacity-80 transition-opacity"
+                  >
+                    Ermias Teklemarkos
+                  </Link>
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
+                    Software Engineer • Addis Ababa, Ethiopia
+                  </p>
+                </div>
 
-              {/* Top row: brand + nav links */}
-              <div className="flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-4 mb-8">
-
-                {/* Brand */}
-                <Link
-                  href="/"
-                  className="text-lg sm:text-xl font-extrabold tracking-wide bg-gradient-to-br from-blue-700 via-blue-900 to-indigo-900 text-transparent bg-clip-text drop-shadow-lg"
-                >
-                  Ermias Teklemarkos
-                </Link>
-
-                {/* Nav links - wrap nicely on mobile */}
-                <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs sm:text-sm">
+                <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:text-sm font-medium">
                   {[
                     { href: "#about", label: "About" },
-                    { href: "#skills", label: "Skills" },
-                    { href: "#projects", label: "Projects" },
                     { href: "#experience", label: "Experience" },
+                    { href: "#projects", label: "Projects" },
+                    { href: "#skills", label: "Skills" },
                     { href: "#education", label: "Education" },
                     { href: "#contact", label: "Contact" },
                   ].map((link) => (
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="hover:text-blue-400 transition-colors"
+                        className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
                       >
                         {link.label}
                       </Link>
@@ -87,32 +90,50 @@ export default function RootLayout({
                 </ul>
               </div>
 
-              {/* Divider */}
-              <div className="border-t border-blue-900/20 mb-6" />
+              <div className="border-t border-neutral-200/80 dark:border-neutral-800/80 my-6" />
 
-              {/* Bottom row: copyright + social */}
-              <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs sm:text-sm">
-                <p className="tracking-wide text-center sm:text-left">
-                  © {new Date().getFullYear()} Ermias Teklemarkos. All rights reserved.
-                </p>
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+                <p>© {new Date().getFullYear()} Ermias Teklemarkos. Built with clean, simple design.</p>
 
-                <div className="flex gap-4">
-                  {[
-                    { href: "https://linkedin.com/in/ermias-tekilemarkos", label: "LinkedIn" },
-                    { href: "https://github.com/ermi-tekk21", label: "GitHub" },
-                    { href: "mailto:ermiasteklemarkos@gmail.com", label: "Email" },
-                  ].map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
+                <div className="flex items-center gap-5">
+                  <Link
+                    href="https://linkedin.com/in/ermias-tekilemarkos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors inline-flex items-center gap-0.5"
+                  >
+                    LinkedIn
+                    <ArrowUpRight className="w-3 h-3" />
+                  </Link>
+                  <Link
+                    href="https://github.com/ermi-tekk21"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors inline-flex items-center gap-0.5"
+                  >
+                    GitHub
+                    <ArrowUpRight className="w-3 h-3" />
+                  </Link>
+                  <Link
+                    href="https://t.me/Tek_jeremy_x03"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors inline-flex items-center gap-0.5"
+                  >
+                    Telegram
+                    <ArrowUpRight className="w-3 h-3" />
+                  </Link>
+                  <Link
+                    href={resumeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors inline-flex items-center gap-0.5"
+                  >
+                    Resume
+                    <ArrowUpRight className="w-3 h-3" />
+                  </Link>
                 </div>
               </div>
-
             </div>
           </footer>
         </ThemeProvider>

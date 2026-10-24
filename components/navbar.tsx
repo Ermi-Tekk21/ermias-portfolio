@@ -1,7 +1,8 @@
 "use client"
+
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ArrowUpRight } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
 import { Button } from "@/components/ui/button"
 
@@ -12,19 +13,21 @@ export function Navbar() {
 
   const navLinks = [
     { href: "#about", label: "About" },
-    { href: "#skills", label: "Skills" },
-    { href: "#projects", label: "Projects" },
     { href: "#experience", label: "Experience" },
+    { href: "#projects", label: "Projects" },
+    { href: "#skills", label: "Skills" },
     { href: "#education", label: "Education" },
     { href: "#contact", label: "Contact" },
   ]
 
+  const resumeUrl = "https://drive.google.com/file/d/1l28kgiCx8k1LetniY2NJM--kxrkKPd0b/view?usp=sharing"
+
   useEffect(() => {
     const controlNavbar = () => {
       if (typeof window !== "undefined") {
-        if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        if (window.scrollY > lastScrollY && window.scrollY > 120) {
           setIsVisible(false)
-          setIsMenuOpen(false) // Close menu when scrolling down
+          setIsMenuOpen(false)
         } else {
           setIsVisible(true)
         }
@@ -39,65 +42,99 @@ export function Navbar() {
   }, [lastScrollY])
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 w-full z-50 bg-white/90 dark:bg-[#080e1f]/90 backdrop-blur-xl border-b border-gray-200 dark:border-blue-900/30 transition-all duration-300 ${
+    <header
+      className={`fixed top-0 left-0 right-0 w-full z-50 bg-white/80 dark:bg-[#111215]/80 backdrop-blur-md border-b border-neutral-200/80 dark:border-neutral-800/80 transition-all duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <nav className="container mx-auto px-4 py-3 flex justify-center gap-10 items-center max-w-7xl">
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
+      <nav className="container mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center max-w-5xl">
+        {/* Brand */}
+        <Link
+          href="#"
+          className="text-base sm:text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 hover:opacity-80 transition-opacity"
+        >
+          Ermias Teklemarkos
+        </Link>
+
+        {/* Desktop Navigation Links */}
+        <div className="hidden md:flex items-center space-x-7">
+          <ul className="flex items-center space-x-6">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex items-center gap-2 pl-2 border-l border-neutral-200 dark:border-neutral-800">
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="text-xs h-8 px-3 rounded-full font-medium"
+            >
+              <Link href={resumeUrl} target="_blank" rel="noopener noreferrer">
+                Resume
+                <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
+              </Link>
+            </Button>
+            <ThemeToggle />
+          </div>
+        </div>
+
+        {/* Mobile Menu Button & Theme Toggle */}
+        <div className="flex md:hidden items-center gap-2">
+          <ThemeToggle />
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10 rounded-full"
+            className="w-9 h-9 rounded-full text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+            aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </Button>
-        </div>
-
-        {/* Desktop Navigation Links */}
-        <ul className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="relative text-gray-800 dark:text-gray-200 font-bold text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-blue-600 dark:after:bg-blue-400 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        {/* Theme Toggle */}
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
         </div>
       </nav>
 
-      {/* Mobile Navigation Overlay */}
-      <div 
-        className={`md:hidden absolute top-full left-0 w-full bg-white dark:bg-[#080e1f] border-b border-gray-200 dark:border-blue-900/30 transition-all duration-300 ease-in-out ${
-          isMenuOpen ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-4 invisible"
+      {/* Mobile Navigation Dropdown */}
+      <div
+        className={`md:hidden bg-white/95 dark:bg-[#111215]/95 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 transition-all duration-200 overflow-hidden ${
+          isMenuOpen ? "max-h-96 opacity-100 py-4 px-6" : "max-h-0 opacity-0 py-0 px-6"
         }`}
       >
-        <ul className="p-4 space-y-4">
+        <ul className="space-y-3">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="block text-gray-800 dark:text-gray-200 font-bold text-lg hover:text-blue-600 dark:hover:text-blue-400 py-2 border-b border-gray-50 dark:border-white/5"
+                className="block text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:text-neutral-950 dark:hover:text-white py-1.5 transition-colors"
               >
                 {link.label}
               </Link>
             </li>
           ))}
+          <li className="pt-2">
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="w-full text-xs font-medium rounded-full"
+            >
+              <Link href={resumeUrl} target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>
+                Resume
+                <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
+              </Link>
+            </Button>
+          </li>
         </ul>
       </div>
     </header>
   )
 }
-
