@@ -49,7 +49,7 @@ export default function Portfolio() {
         audioRef.current.pause()
         audioRef.current.currentTime = 0
       } else {
-        audioRef.current.play().catch(() => {})
+        audioRef.current.play().catch(() => { })
       }
       setIsPlaying(!isPlaying)
     }
@@ -382,7 +382,7 @@ export default function Portfolio() {
         {/* HERO SECTION — Clean, Human-made, Fully Responsive */}
         <section id="hero" className="pt-2 sm:pt-4">
           <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-5 sm:gap-7 md:gap-9">
-            
+
             {/* Profile Avatar */}
             <div className="relative shrink-0">
               <div className="w-24 h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border border-neutral-200 dark:border-neutral-700 shadow-sm bg-neutral-100 dark:bg-neutral-800">
@@ -424,9 +424,7 @@ export default function Portfolio() {
               </h1>
 
               <p className="text-xs xs:text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-2xl mx-auto sm:mx-0">
-                Backend-focused full-stack software engineer with 2+ years of professional experience building fintech and agritech microservices and RESTful APIs with Node.js and FastAPI. Currently developing payment services for Dashen Bank’s Super App (2M+ subscribers).
-              </p>
-
+                Backend-heavy Full-Stack Software Engineer with 2+ years of professional experience (plus internships) building scalable fintech and agritech microservices, RESTful APIs, and AI-powered workflow automations using tools like n8n. Experienced in backend development with Node.js (Express.js, NestJS, and Fastify), Python (FastAPI), and Go (Chi), alongside frontend development with React, Next.js, and modern UI tools. Skilled in database design, third-party integrations, and building reliable, maintainable software solutions.</p>
               {/* Action Buttons — Touch-Friendly & Clean */}
               <div className="flex flex-wrap justify-center sm:justify-start items-center gap-2 xs:gap-3 pt-2">
                 <Button asChild size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-4 xs:px-5">
@@ -517,7 +515,7 @@ export default function Portfolio() {
 
         {/* 2-COLUMN SECTION: ABOUT ME + PAST EXPERIENCE (Responsive Grid for Mobile, Tablet & Desktop) */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 pt-6 sm:pt-8 border-t border-neutral-100 dark:border-neutral-800/80">
-          
+
           {/* LEFT: About Me */}
           <div id="about" className="lg:col-span-5 space-y-3.5 sm:space-y-4">
             <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
@@ -526,13 +524,23 @@ export default function Portfolio() {
 
             <div className="space-y-3 text-xs xs:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
               <p>
-                Backend-focused full-stack software engineer with 2+ years of professional experience (plus internships) building fintech and agritech microservices and RESTful APIs with Node.js (NestJS, Express.js) and FastAPI.
+                Backend-heavy Full-Stack Software Engineer with 2+ years of
+                professional experience (plus internships) building scalable fintech
+                and agritech microservices, RESTful APIs, and AI-powered workflow
+                automations using tools like n8n.
               </p>
               <p>
-                Currently developing payment services for Dashen Bank’s Super App (serving 2M+ subscribers, 25M+ transactions worth 250B+ Birr), focused on credit scoring, idempotency, double-entry accounting, and transaction reconciliation.
+                Currently developing payment services for Dashen Bank’s Super App
+                (serving 2M+ subscribers, with 25M+ transactions worth 250B+ Birr),
+                focusing on reliable payment processing, idempotency, double-entry
+                accounting, and transaction reconciliation.
               </p>
               <p>
-                Experienced with event-driven architecture (Kafka, RabbitMQ), PostgreSQL, MongoDB, Docker-based CI/CD, and building modern frontends with React and Next.js, and currently exploring and learning ML-focused Data Science.
+                Experienced in backend development with Node.js (NestJS, Express.js,
+                and Fastify), Python (FastAPI), and Go (Chi); event-driven architecture
+                with Kafka and RabbitMQ; PostgreSQL, MongoDB, and Docker-based CI/CD.
+                Also skilled in frontend development with React, Next.js, and modern
+                UI tools, with a growing interest in machine learning and data science.
               </p>
             </div>
 
@@ -620,11 +628,10 @@ export default function Portfolio() {
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`text-xs px-3 py-1.5 rounded-full font-medium whitespace-nowrap transition-all ${
-                      activeCategory === cat
-                        ? "bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 shadow-xs"
-                        : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"
-                    }`}
+                    className={`text-xs px-3 py-1.5 rounded-full font-medium whitespace-nowrap transition-all ${activeCategory === cat
+                      ? "bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 shadow-xs"
+                      : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"
+                      }`}
                   >
                     {cat}
                   </button>
@@ -992,11 +999,10 @@ export default function Portfolio() {
         {/* Music Player Button in Dock */}
         <button
           onClick={toggleMusic}
-          className={`p-1.5 xs:p-2 rounded-full transition-colors shrink-0 ${
-            isPlaying
-              ? "text-neutral-950 dark:text-white bg-neutral-100 dark:bg-neutral-800"
-              : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800"
-          }`}
+          className={`p-1.5 xs:p-2 rounded-full transition-colors shrink-0 ${isPlaying
+            ? "text-neutral-950 dark:text-white bg-neutral-100 dark:bg-neutral-800"
+            : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800"
+            }`}
           title={isPlaying ? "Pause music" : "Play subtle background music"}
           aria-label="Play or pause background music"
         >
