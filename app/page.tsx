@@ -129,6 +129,28 @@ export default function Portfolio() {
       badge: "Flagship Fintech",
     },
     {
+      title: "AssistFlow AI — Autonomous Executive Assistant",
+      subtitle: "AI Scheduling & Workflow Orchestration",
+      category: "ML & AI",
+      featured: true,
+      description:
+        "Autonomous executive assistant that interprets natural-language requests into scheduled calendar events and actionable reminders. Features bidirectional Google Calendar sync with auto-provisioned Google Meet rooms, automated morning briefings and push notifications via Telegram, and proactive workflow automation powered by n8n with human-in-the-loop safety guardrails.",
+      tech: [
+        "Google Gemini LLM",
+        "n8n Workflows",
+        "Google Calendar API",
+        "Google Meet",
+        "Telegram Bot API",
+        "TypeScript",
+        "Node.js (Express)",
+        "PostgreSQL",
+        "TypeORM",
+      ],
+      liveUrl: "https://assist-flow.pro.et/",
+      githubUrl: "https://github.com/Ermi-Tekk21/AssistFlow-AI",
+      badge: "AI Automation",
+    },
+    {
       title: "Dynamic Credit Scoring Engine",
       subtitle: "Green Agro Solution PLC",
       category: "Fintech & Backend",
@@ -303,6 +325,20 @@ export default function Portfolio() {
     {
       title: "Backend & Frameworks",
       skills: ["Node.js", "NestJS", "Express.js", "FastAPI", "GoChi", "Next.js", "React.js"],
+    },
+    {
+      title: "AI & Workflow Automation",
+      skills: [
+        "AI Automation",
+        "Workflow Automation",
+        "Workflow Tools (n8n)",
+        "LLM Models (Gemini, Claude, GPT)",
+        "Google Tools (Calendar, Meet, Drive, Gmail APIs)",
+        "Google 3rd-Party Integrations",
+        "Autonomous AI Agents",
+        "Prompt Engineering",
+        "Webhook & Event Triggers",
+      ],
     },
     {
       title: "Architecture & Distributed Systems",
@@ -752,7 +788,7 @@ export default function Portfolio() {
               Skills & technologies
             </h2>
             <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1">
-              Core technologies, system architecture patterns, and engineering practices from production experience.
+              Core technologies, AI & workflow automations, distributed systems, and engineering practices from production experience.
             </p>
           </div>
 

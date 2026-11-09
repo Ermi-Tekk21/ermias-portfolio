@@ -9,6 +9,8 @@ import { ArrowUpRight } from "lucide-react"
 
 const inter = Inter({ subsets: ["latin"] })
 
+const siteUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://ermias-teklemarkos-portfolio.vercel.app"
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -20,33 +22,114 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
-  title: "Ermias Teklemarkos — Software Engineer",
-  description: "Backend Focused Full-Stack Software Engineer building fintech and agritech microservices and RESTful APIs with Node.js and FastAPI.",
-  icons: {
-    icon: "/favicon.ico",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Ermias Teklemarkos — Software Engineer | Backend & AI Automation",
+    template: "%s | Ermias Teklemarkos",
   },
+  description:
+    "Backend-heavy Full-Stack Software Engineer specializing in scalable microservices, high-throughput APIs, distributed systems, and AI workflow automations with n8n, Node.js, FastAPI, Go, and LLMs.",
+  keywords: [
+    "Ermias Teklemarkos",
+    "Software Engineer",
+    "Backend Developer",
+    "Full Stack Engineer",
+    "Microservices",
+    "Distributed Systems",
+    "AI Automation",
+    "Workflow Automation",
+    "n8n Workflows",
+    "LLM Models",
+    "Google Gemini",
+    "Google 3rd-Party Integrations",
+    "Node.js",
+    "NestJS",
+    "Express.js",
+    "FastAPI",
+    "Python",
+    "Go",
+    "PostgreSQL",
+    "Kafka",
+    "Redis",
+    "Next.js",
+    "React",
+    "Addis Ababa",
+    "Ethiopia",
+  ],
+  authors: [{ name: "Ermias Teklemarkos", url: siteUrl }],
+  creator: "Ermias Teklemarkos",
+  publisher: "Ermias Teklemarkos",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+  },
+  manifest: "/manifest.json",
   openGraph: {
-    title: "Ermias Teklemarkos — Software Engineer",
-    description: "Backend Focused Full-Stack Software Engineer building fintech and agritech microservices and RESTful APIs with Node.js and FastAPI.",
-    url: "https://ermias-teklemarkos-portfolio.vercel.app",
-    siteName: "Ermias Teklemarkos Portfolio",
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "Ermias Teklemarkos — Software Engineer",
+    title: "Ermias Teklemarkos — Software Engineer | Backend & AI Automation",
+    description:
+      "Backend-heavy Full-Stack Software Engineer specializing in scalable microservices, high-throughput APIs, distributed systems, and AI workflow automations with n8n, Node.js, FastAPI, Go, and LLMs.",
     images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Ermias Teklemarkos — Software Engineer Portfolio Thumbnail",
+        type: "image/png",
+      },
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Ermias Teklemarkos Portfolio",
+        alt: "Ermias Teklemarkos — Software Engineer Portfolio Thumbnail",
+        type: "image/jpeg",
       },
     ],
-    locale: "en_US",
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ermias Teklemarkos — Software Engineer",
-    description: "Backend Focused Full-Stack Software Engineer building fintech and agritech microservices and RESTful APIs with Node.js and FastAPI.",
-    images: ["/og-image.jpg"],
+    title: "Ermias Teklemarkos — Software Engineer | Backend & AI Automation",
+    description:
+      "Backend-heavy Full-Stack Software Engineer specializing in scalable microservices, high-throughput APIs, distributed systems, and AI workflow automations with n8n, Node.js, FastAPI, Go, and LLMs.",
+    creator: "@ermi_tekk21",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Ermias Teklemarkos — Software Engineer Portfolio Thumbnail",
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 }
 
@@ -57,8 +140,70 @@ export default function RootLayout({
 }>) {
   const resumeUrl = "https://drive.google.com/file/d/1l28kgiCx8k1LetniY2NJM--kxrkKPd0b/view?usp=sharing"
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${siteUrl}/#person`,
+        name: "Ermias Teklemarkos",
+        jobTitle: "Software Engineer",
+        description:
+          "Backend-heavy Full-Stack Software Engineer specializing in scalable microservices, high-throughput APIs, distributed systems, and AI workflow automations with n8n, Node.js, FastAPI, Go, and LLMs.",
+        url: siteUrl,
+        image: `${siteUrl}/profile.png`,
+        sameAs: [
+          "https://linkedin.com/in/ermias-tekilemarkos",
+          "https://github.com/ermi-tekk21",
+          "https://t.me/Tek_jeremy_x03",
+        ],
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Addis Ababa",
+          addressCountry: "ET",
+        },
+        knowsAbout: [
+          "Backend Engineering",
+          "Microservices Architecture",
+          "Fintech Systems",
+          "AI Automation",
+          "Workflow Automation (n8n)",
+          "LLMs (Gemini, OpenAI, Claude)",
+          "Node.js",
+          "NestJS",
+          "FastAPI",
+          "Go",
+          "PostgreSQL",
+          "Kafka",
+          "Redis",
+        ],
+        alumniOf: {
+          "@type": "EducationalOrganization",
+          name: "Adama Science and Technology University (ASTU)",
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        url: siteUrl,
+        name: "Ermias Teklemarkos — Software Engineer",
+        description:
+          "Portfolio of Ermias Teklemarkos — Backend & Full-Stack Software Engineer specializing in scalable fintech microservices and AI workflow automations.",
+        publisher: {
+          "@id": `${siteUrl}/#person`,
+        },
+      },
+    ],
+  }
+
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${inter.className} min-h-screen flex flex-col bg-[#f4f5f7] dark:bg-[#0c0d10] text-neutral-900 dark:text-neutral-100 antialiased selection:bg-neutral-200 selection:text-neutral-900 dark:selection:bg-neutral-800 dark:selection:text-neutral-100`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} disableTransitionOnChange={false}>
           <Navbar />
