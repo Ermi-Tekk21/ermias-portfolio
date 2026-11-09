@@ -567,8 +567,8 @@ export default function Portfolio() {
 
               <p className="text-xs xs:text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-2xl mx-auto sm:mx-0">
                 Backend-heavy Full-Stack Software Engineer with 3+ years of
-                professional experience (plus internships) building scalable 
-                <span className="font-semibold text-neutral-900 dark:text-neutral-100">fintech and agritech</span> microservices, RESTful APIs, and AI-powered
+                professional experience (plus internships) building scalable{" "}
+                <span className="font-semibold text-neutral-700 dark:text-neutral-300">fintech and agritech</span>{" "}microservices, RESTful APIs, and AI-powered
                 workflow automations using tools like n8n. Experienced in
                 backend development with Node.js (Express.js, NestJS, and
                 Fastify), Python (FastAPI), and Go (Chi), alongside frontend
@@ -703,8 +703,8 @@ export default function Portfolio() {
             <div className="space-y-3 text-xs xs:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
               <p>
                 Backend-heavy Full-Stack Software Engineer with 3+ years of
-                professional experience (plus internships) building scalable 
-                <span className="font-semibold text-neutral-900 dark:text-neutral-100">fintech and agritech</span> microservices, RESTful APIs, and AI-powered
+                professional experience (plus internships) building scalable{" "}
+                <span className="font-semibold text-neutral-700 dark:text-neutral-300">fintech and agritech</span>{" "}microservices, RESTful APIs, and AI-powered
                 workflow automations using tools like n8n.
               </p>
               <p>
