@@ -9,7 +9,7 @@ import { ArrowUpRight } from "lucide-react"
 
 const inter = Inter({ subsets: ["latin"] })
 
-const siteUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://ermias-teklemarkos-portfolio.vercel.app"
+const siteUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://ermias.pro.et"
 
 export const viewport: Viewport = {
   width: "device-width",

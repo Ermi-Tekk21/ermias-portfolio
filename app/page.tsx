@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import { useState, useRef, useEffect } from "react"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { useState, useRef, useEffect } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Github,
   Linkedin,
@@ -27,33 +27,34 @@ import {
   Cpu,
   CheckCircle2,
   ExternalLink,
-} from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Portfolio() {
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [activeCategory, setActiveCategory] = useState<string>("All")
-  const [mounted, setMounted] = useState(false)
-  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<string>("All");
+  const [mounted, setMounted] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const resumeUrl = "https://drive.google.com/file/d/1l28kgiCx8k1LetniY2NJM--kxrkKPd0b/view?usp=sharing"
+  const resumeUrl =
+    "https://drive.google.com/file/d/1l28kgiCx8k1LetniY2NJM--kxrkKPd0b/view?usp=sharing";
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   const toggleMusic = () => {
     if (audioRef.current) {
       if (isPlaying) {
-        audioRef.current.pause()
-        audioRef.current.currentTime = 0
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
       } else {
-        audioRef.current.play().catch(() => { })
+        audioRef.current.play().catch(() => { });
       }
-      setIsPlaying(!isPlaying)
+      setIsPlaying(!isPlaying);
     }
-  }
+  };
 
   const experiences = [
     {
@@ -66,7 +67,14 @@ export default function Portfolio() {
         "Implement idempotency to prevent duplicate payments, double-entry accounting, transaction reconciliation, and automated settlements, with secure secret management for credentials.",
         "Design scalable background workers and event pipelines using Kafka and Redis for low-latency transaction processing.",
       ],
-      stack: ["Node.js (Express.js, NestJS)", "TypeScript", "Redis", "Kafka", "PostgreSQL", "MongoDB"],
+      stack: [
+        "Node.js (Express.js, NestJS)",
+        "TypeScript",
+        "Redis",
+        "Kafka",
+        "PostgreSQL",
+        "MongoDB",
+      ],
     },
     {
       role: "Software Developer",
@@ -79,7 +87,16 @@ export default function Portfolio() {
         "Implemented event-driven communication between services using Kafka and RabbitMQ.",
         "Enforced strict code quality, test coverage, and maintainability using SonarQube.",
       ],
-      stack: ["Node.js", "NestJS", "FastAPI", "TypeORM", "PostgreSQL", "Kong", "Kafka", "RabbitMQ"],
+      stack: [
+        "Node.js",
+        "NestJS",
+        "FastAPI",
+        "TypeORM",
+        "PostgreSQL",
+        "Kong",
+        "Kafka",
+        "RabbitMQ",
+      ],
     },
     {
       role: "ALX Software Engineering Tutor",
@@ -90,7 +107,12 @@ export default function Portfolio() {
         "Mentored ALX Software Engineering Cohort 22 students across Ethiopia, Ghana, and South Africa through 5+ one-on-one sessions.",
         "Provided hands-on guidance on full-stack portfolio projects, complex system architecture, and debugging challenges.",
       ],
-      stack: ["Mentorship", "Backend Engineering", "System Design", "C / Python"],
+      stack: [
+        "Mentorship",
+        "Backend Engineering",
+        "System Design",
+        "C / Python",
+      ],
     },
     {
       role: "Web Developer Intern",
@@ -114,7 +136,7 @@ export default function Portfolio() {
       ],
       stack: ["HTML", "CSS", "Tailwind CSS", "React"],
     },
-  ]
+  ];
 
   const projects = [
     {
@@ -124,7 +146,16 @@ export default function Portfolio() {
       featured: true,
       description:
         "Built backend services for scheduled and recurring payments across Telebirr and M-Pesa wallets on Dashen Bank's Super App serving 2M+ subscribers. Implemented idempotency to prevent duplicate payments, transaction reconciliation, double-entry accounting, and secure secret management with SMS/email notifications.",
-      tech: ["Node.js", "NestJS", "Express.js", "TypeScript", "Kafka", "Redis", "PostgreSQL", "MongoDB"],
+      tech: [
+        "Node.js",
+        "NestJS",
+        "Express.js",
+        "TypeScript",
+        "Kafka",
+        "Redis",
+        "PostgreSQL",
+        "MongoDB",
+      ],
       internalUse: true,
       badge: "Flagship Fintech",
     },
@@ -168,7 +199,14 @@ export default function Portfolio() {
       featured: true,
       description:
         "Led design and implementation of the ML component, generating personalized nutrition recommendations from user profile data. Trained on ~2,000 user profiles and ~400 Ethiopian foods, achieving 70-80% model accuracy on test data.",
-      tech: ["FastAPI", "Scikit-learn", "Pandas", "NumPy", "Next.js", "AWS Free Tier"],
+      tech: [
+        "FastAPI",
+        "Scikit-learn",
+        "Pandas",
+        "NumPy",
+        "Next.js",
+        "AWS Free Tier",
+      ],
       liveUrl: "https://nutrifocusmealplan.duckdns.org/",
       apiDocsUrl: "https://ml-backend.duckdns.org/API-DOCS",
       badge: "Machine Learning",
@@ -180,7 +218,15 @@ export default function Portfolio() {
       featured: false,
       description:
         "Designed, developed, and deployed an internal microservices system to evaluate call agent performance, providing managers with actionable monitoring metrics and productivity insights connected via Kong API Gateway.",
-      tech: ["NestJS", "TypeScript", "PostgreSQL", "TypeORM", "Kafka", "SonarQube", "Kong API Gateway"],
+      tech: [
+        "NestJS",
+        "TypeScript",
+        "PostgreSQL",
+        "TypeORM",
+        "Kafka",
+        "SonarQube",
+        "Kong API Gateway",
+      ],
       internalUse: true,
       badge: "Microservices",
     },
@@ -201,43 +247,50 @@ export default function Portfolio() {
       featured: false,
       description:
         "Designed a platform for training coordination, event planning, and management for Lersha and international partners. Integrated with existing microservices via RabbitMQ, boosting coordination and reporting efficiency by 30%.",
-      tech: ["NestJS", "TypeScript", "PostgreSQL", "TypeORM", "RabbitMQ", "SonarQube"],
+      tech: [
+        "NestJS",
+        "TypeScript",
+        "PostgreSQL",
+        "TypeORM",
+        "RabbitMQ",
+        "SonarQube",
+      ],
       internalUse: true,
       badge: "Microservices",
     },
-    {
-      title: "YC-Directory",
-      subtitle: "Startup Showcase & Pitch Directory",
-      category: "Full-Stack Web",
-      featured: false,
-      description:
-        "A Y Combinator-inspired startup directory where founders can pitch, discover, and filter emerging startups. Features GitHub OAuth authentication, real-time Sanity CMS integration, and dynamic startup profiles.",
-      tech: ["Next.js", "Sanity CMS", "Auth.js", "Tailwind CSS", "TypeScript"],
-      liveUrl: "https://yc-directory-clone-by-ermi.vercel.app/",
-      badge: "Web App",
-    },
-    {
-      title: "Fast Proforma",
-      subtitle: "Invoice & Auto-Quotation Generator",
-      category: "Full-Stack Web",
-      featured: false,
-      description:
-        "Proforma invoice and estimation management software built for auto spare parts shops with instant PDF generation, item catalogue management, and quick preview capabilities.",
-      tech: ["Next.js", "MongoDB", "Tailwind CSS", "ShadCN UI"],
-      liveUrl: "https://fast-spare.vercel.app/auth/login",
-      badge: "SaaS",
-    },
-    {
-      title: "Sebez Visual Art eCommerce",
-      subtitle: "Creative Marketplace Platform",
-      category: "Full-Stack Web",
-      featured: false,
-      description:
-        "Full-stack eCommerce platform for visual art products featuring rich user management, storefront browsing, instant Chapa payment gateway integration, and real-time chat functionality.",
-      tech: ["Next.js", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
-      liveUrl: "https://sebez-visual-frontend.onrender.com/",
-      badge: "eCommerce",
-    },
+    // {
+    //   title: "YC-Directory",
+    //   subtitle: "Startup Showcase & Pitch Directory",
+    //   category: "Full-Stack Web",
+    //   featured: false,
+    //   description:
+    //     "A Y Combinator-inspired startup directory where founders can pitch, discover, and filter emerging startups. Features GitHub OAuth authentication, real-time Sanity CMS integration, and dynamic startup profiles.",
+    //   tech: ["Next.js", "Sanity CMS", "Auth.js", "Tailwind CSS", "TypeScript"],
+    //   liveUrl: "https://yc-directory-clone-by-ermi.vercel.app/",
+    //   badge: "Web App",
+    // },
+    // {
+    //   title: "Fast Proforma",
+    //   subtitle: "Invoice & Auto-Quotation Generator",
+    //   category: "Full-Stack Web",
+    //   featured: false,
+    //   description:
+    //     "Proforma invoice and estimation management software built for auto spare parts shops with instant PDF generation, item catalogue management, and quick preview capabilities.",
+    //   tech: ["Next.js", "MongoDB", "Tailwind CSS", "ShadCN UI"],
+    //   liveUrl: "https://fast-spare.vercel.app/auth/login",
+    //   badge: "SaaS",
+    // },
+    // {
+    //   title: "Sebez Visual Art eCommerce",
+    //   subtitle: "Creative Marketplace Platform",
+    //   category: "Full-Stack Web",
+    //   featured: false,
+    //   description:
+    //     "Full-stack eCommerce platform for visual art products featuring rich user management, storefront browsing, instant Chapa payment gateway integration, and real-time chat functionality.",
+    //   tech: ["Next.js", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+    //   liveUrl: "https://sebez-visual-frontend.onrender.com/",
+    //   badge: "eCommerce",
+    // },
     {
       title: "Ad Ventures",
       subtitle: "Transit & Billboard Advertising",
@@ -267,7 +320,12 @@ export default function Portfolio() {
       featured: false,
       description:
         "Comprehensive UI/UX design prototype for navigating local pharmacies, searching medications, verifying prescriptions, and booking on-demand deliveries.",
-      tech: ["Figma", "UX Research", "Interactive Prototyping", "Design System"],
+      tech: [
+        "Figma",
+        "UX Research",
+        "Interactive Prototyping",
+        "Design System",
+      ],
       figmaEmbed:
         '<iframe style="border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 12px;" class="w-full aspect-[16/9]" src="https://embed.figma.com/design/8tZeMxk82HuL7nPRVP38gP/Pharmacy-app-ui?node-id=0-1&embed-host=share" allowfullscreen></iframe>',
       badge: "Figma Prototype",
@@ -308,14 +366,20 @@ export default function Portfolio() {
         '<iframe style="border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 12px;" class="w-full aspect-[16/9]" src="https://embed.figma.com/design/vWcimE0GlSFHeBZqZ0MGCU/BeteEnda?embed-host=share" allowfullscreen></iframe>',
       badge: "Figma Prototype",
     },
-  ]
+  ];
 
-  const categories = ["All", "Fintech & Backend", "Full-Stack Web", "ML & AI", "UX/UI Design"]
+  const categories = [
+    "All",
+    "Fintech & Backend",
+    "Full-Stack Web",
+    "ML & AI",
+    "UX/UI Design",
+  ];
 
   const filteredProjects =
     activeCategory === "All"
       ? projects
-      : projects.filter((project) => project.category === activeCategory)
+      : projects.filter((project) => project.category === activeCategory);
 
   const skillGroups = [
     {
@@ -324,7 +388,15 @@ export default function Portfolio() {
     },
     {
       title: "Backend & Frameworks",
-      skills: ["Node.js", "NestJS", "Express.js", "FastAPI", "GoChi", "Next.js", "React.js"],
+      skills: [
+        "Node.js",
+        "NestJS",
+        "Express.js",
+        "FastAPI",
+        "GoChi",
+        "Next.js",
+        "React.js",
+      ],
     },
     {
       title: "AI & Workflow Automation",
@@ -342,28 +414,59 @@ export default function Portfolio() {
     },
     {
       title: "Architecture & Distributed Systems",
-      skills: ["Microservices", "Event-Driven Architecture", "Kafka", "RabbitMQ", "RESTful APIs", "Idempotency Patterns"],
+      skills: [
+        "Microservices",
+        "Event-Driven Architecture",
+        "Kafka",
+        "RabbitMQ",
+        "RESTful APIs",
+        "Idempotency Patterns",
+      ],
     },
     {
       title: "Databases & ORMs",
-      skills: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "TypeORM", "SQLAlchemy", "Prisma"],
+      skills: [
+        "PostgreSQL",
+        "MongoDB",
+        "Redis",
+        "MySQL",
+        "TypeORM",
+        "SQLAlchemy",
+        "Prisma",
+      ],
     },
     {
       title: "DevOps & Cloud Tools",
-      skills: ["Docker", "Git / GitHub", "GitHub Actions", "Jenkins", "AWS (EC2, S3)", "Kong API Gateway", "SonarQube", "Swagger"],
+      skills: [
+        "Docker",
+        "Git / GitHub",
+        "GitHub Actions",
+        "Jenkins",
+        "AWS (EC2, S3)",
+        "Kong API Gateway",
+        "SonarQube",
+        "Swagger",
+      ],
     },
     {
       title: "Engineering Practices",
-      skills: ["Double-Entry Accounting", "Transaction Reconciliation", "Agile & Scrum", "Test-Driven Development", "Code Quality"],
+      skills: [
+        "Double-Entry Accounting",
+        "Transaction Reconciliation",
+        "Agile & Scrum",
+        "Test-Driven Development",
+        "Code Quality",
+      ],
     },
-  ]
+  ];
 
   const certifications = [
     {
       title: "ALX Software Engineering Program",
       issuer: "ALX Africa",
       date: "Jan 2023 — Jul 2024",
-      description: "12-month intensive program covering backend systems, C, Python, algorithms, databases, and distributed infrastructure.",
+      description:
+        "12-month intensive program covering backend systems, C, Python, algorithms, databases, and distributed infrastructure.",
       link: "https://savanna.alxafrica.com/certificates/eJSHf2XsEz",
       linkText: "View Certificate",
     },
@@ -371,9 +474,11 @@ export default function Portfolio() {
       title: "ALX SE Tutor Recognition & Letter of Recommendation",
       issuer: "ALX Africa",
       date: "Feb 2025",
-      description: "Recognized with a Letter of Recommendation and Certificate for exceptional technical guidance of Cohort 22 students.",
+      description:
+        "Recognized with a Letter of Recommendation and Certificate for exceptional technical guidance of Cohort 22 students.",
       link: "https://drive.google.com/file/d/136RIcHt6dUg0B7f6JAiMF1CRTVfJVpBy/view",
-      secondaryLink: "https://drive.google.com/file/d/1XJdvb-Bdig6TCQ5l6BBKhT2Vp2EhVjfb/view",
+      secondaryLink:
+        "https://drive.google.com/file/d/1XJdvb-Bdig6TCQ5l6BBKhT2Vp2EhVjfb/view",
       linkText: "Recommendation Letter",
       secondaryLinkText: "Certificate",
     },
@@ -381,7 +486,8 @@ export default function Portfolio() {
       title: "ALX Ventures Founders Academy",
       issuer: "ALX Africa",
       date: "May 2024 — Jul 2024",
-      description: "Focused on entrepreneurship, venture building, product-market fit, and technical product leadership.",
+      description:
+        "Focused on entrepreneurship, venture building, product-market fit, and technical product leadership.",
       link: "https://savanna.alxafrica.com/certificates/hcPHpY72mx",
       linkText: "View Certificate",
     },
@@ -389,7 +495,8 @@ export default function Portfolio() {
       title: "Advanced Web Development Bootcamp",
       issuer: "CSECASTU",
       date: "2023",
-      description: "Advanced training in modern web applications, scalable architectures, and developer tooling.",
+      description:
+        "Advanced training in modern web applications, scalable architectures, and developer tooling.",
       link: "https://www.linkedin.com/in/ermias-tekilemarkos/details/certifications/1729430251294/single-media-viewer/?profileId=ACoAAECF_iEBfBQDBf7CMtySAf_u2AhuqyjV_pE",
       linkText: "View Certificate",
     },
@@ -397,11 +504,12 @@ export default function Portfolio() {
       title: "National Science Fair Competition",
       issuer: "UNESCO & Ministry of Innovation & Technology",
       date: "Nov 2018",
-      description: "National-level competition organized by MoE, UNESCO, and the Ministry of Innovation.",
+      description:
+        "National-level competition organized by MoE, UNESCO, and the Ministry of Innovation.",
       link: "https://www.linkedin.com/in/ermias-tekilemarkos/details/certifications/1729429628737/single-media-viewer/?profileId=ACoAAECF_iEBfBQDBf7CMtySAf_u2AhuqyjV_pE",
       linkText: "View Certificate",
     },
-  ]
+  ];
 
   return (
     <div className="relative min-h-screen px-2.5 xs:px-4 sm:px-6 md:px-8">
@@ -414,11 +522,9 @@ export default function Portfolio() {
 
       {/* Main Single-Card Frame inspired by BRIX Templates Simple Portfolio */}
       <div className="max-w-4xl lg:max-w-5xl mx-auto my-2 xs:my-4 sm:my-6 md:my-8 bg-white dark:bg-[#151619] rounded-2xl sm:rounded-3xl md:rounded-[32px] border border-neutral-200/90 dark:border-neutral-800 shadow-[0_2px_24px_rgba(0,0,0,0.04)] dark:shadow-none p-4 xs:p-6 sm:p-8 md:p-12 lg:p-14 space-y-10 sm:space-y-14 md:space-y-16 overflow-hidden">
-
         {/* HERO SECTION — Clean, Human-made, Fully Responsive */}
         <section id="hero" className="pt-2 sm:pt-4">
           <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-5 sm:gap-7 md:gap-9">
-
             {/* Profile Avatar */}
             <div className="relative shrink-0">
               <div className="w-24 h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border border-neutral-200 dark:border-neutral-700 shadow-sm bg-neutral-100 dark:bg-neutral-800">
@@ -460,24 +566,51 @@ export default function Portfolio() {
               </h1>
 
               <p className="text-xs xs:text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-2xl mx-auto sm:mx-0">
-                Backend-heavy Full-Stack Software Engineer with 2+ years of professional experience (plus internships) building scalable fintech and agritech microservices, RESTful APIs, and AI-powered workflow automations using tools like n8n. Experienced in backend development with Node.js (Express.js, NestJS, and Fastify), Python (FastAPI), and Go (Chi), alongside frontend development with React, Next.js, and modern UI tools. Skilled in database design, third-party integrations, and building reliable, maintainable software solutions.</p>
+                Backend-heavy Full-Stack Software Engineer with 3+ years of
+                professional experience (plus internships) building scalable
+                <span className="font-semibold text-neutral-900 dark:text-neutral-100">fintech and agritech</span> microservices, RESTful APIs, and AI-powered
+                workflow automations using tools like n8n. Experienced in
+                backend development with Node.js (Express.js, NestJS, and
+                Fastify), Python (FastAPI), and Go (Chi), alongside frontend
+                development with React, Next.js, and modern UI tools. Skilled in
+                database design, third-party integrations, and building
+                reliable, maintainable software solutions.
+              </p>
               {/* Action Buttons — Touch-Friendly & Clean */}
               <div className="flex flex-wrap justify-center sm:justify-start items-center gap-2 xs:gap-3 pt-2">
-                <Button asChild size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-4 xs:px-5">
+                <Button
+                  asChild
+                  size="default"
+                  className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-4 xs:px-5"
+                >
                   <Link href="#contact">
                     Contact me
                     <ArrowUpRight className="w-3.5 h-3.5 xs:w-4 xs:h-4 ml-1" />
                   </Link>
                 </Button>
 
-                <Button asChild variant="outline" size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-4 xs:px-5">
-                  <Link href={resumeUrl} target="_blank" rel="noopener noreferrer">
+                <Button
+                  asChild
+                  variant="outline"
+                  size="default"
+                  className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-4 xs:px-5"
+                >
+                  <Link
+                    href={resumeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Resume
                     <ArrowUpRight className="w-3.5 h-3.5 xs:w-4 xs:h-4 ml-1" />
                   </Link>
                 </Button>
 
-                <Button asChild variant="ghost" size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-3.5 xs:px-4">
+                <Button
+                  asChild
+                  variant="ghost"
+                  size="default"
+                  className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-3.5 xs:px-4"
+                >
                   <Link href="#projects">
                     View work
                     <ArrowUpRight className="w-3.5 h-3.5 xs:w-4 xs:h-4 ml-1" />
@@ -489,11 +622,21 @@ export default function Portfolio() {
                   <button
                     onClick={toggleMusic}
                     className="inline-flex items-center gap-1.5 xs:gap-2 px-3 py-1.5 xs:py-2 rounded-full border border-neutral-200 dark:border-neutral-800 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
-                    title={isPlaying ? "Pause music" : "Play subtle background music"}
+                    title={
+                      isPlaying ? "Pause music" : "Play subtle background music"
+                    }
                   >
-                    <Music className={`w-3.5 h-3.5 ${isPlaying ? "music-wiggle-active text-neutral-900 dark:text-white" : ""}`} />
-                    <span className="hidden xs:inline">{isPlaying ? "Pause" : "Office Jam"}</span>
-                    {isPlaying ? <Square className="w-3 h-3 fill-current" /> : <Play className="w-3 h-3 fill-current" />}
+                    <Music
+                      className={`w-3.5 h-3.5 ${isPlaying ? "music-wiggle-active text-neutral-900 dark:text-white" : ""}`}
+                    />
+                    <span className="hidden xs:inline">
+                      {isPlaying ? "Pause" : "Office Jam"}
+                    </span>
+                    {isPlaying ? (
+                      <Square className="w-3 h-3 fill-current" />
+                    ) : (
+                      <Play className="w-3 h-3 fill-current" />
+                    )}
                     {isPlaying && (
                       <div className="flex items-end h-3 gap-0.5">
                         <div className="wave-bar h-2" />
@@ -551,7 +694,6 @@ export default function Portfolio() {
 
         {/* 2-COLUMN SECTION: ABOUT ME + PAST EXPERIENCE (Responsive Grid for Mobile, Tablet & Desktop) */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 pt-6 sm:pt-8 border-t border-neutral-100 dark:border-neutral-800/80">
-
           {/* LEFT: About Me */}
           <div id="about" className="lg:col-span-5 space-y-3.5 sm:space-y-4">
             <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
@@ -560,23 +702,24 @@ export default function Portfolio() {
 
             <div className="space-y-3 text-xs xs:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
               <p>
-                Backend-heavy Full-Stack Software Engineer with 2+ years of
-                professional experience (plus internships) building scalable fintech
-                and agritech microservices, RESTful APIs, and AI-powered workflow
-                automations using tools like n8n.
+                Backend-heavy Full-Stack Software Engineer with 3+ years of
+                professional experience (plus internships) building scalable
+                <span className="font-semibold text-neutral-900 dark:text-neutral-100">fintech and agritech</span> microservices, RESTful APIs, and AI-powered
+                workflow automations using tools like n8n.
               </p>
               <p>
-                Currently developing payment services for Dashen Bank’s Super App
-                (serving 2M+ subscribers, with 25M+ transactions worth 250B+ Birr),
-                focusing on reliable payment processing, idempotency, double-entry
-                accounting, and transaction reconciliation.
+                Currently developing payment services for Dashen Bank’s Super
+                App (serving 2M+ subscribers, with 25M+ transactions worth 250B+
+                Birr), focusing on reliable payment processing, idempotency,
+                double-entry accounting, and transaction reconciliation.
               </p>
               <p>
-                Experienced in backend development with Node.js (NestJS, Express.js,
-                and Fastify), Python (FastAPI), and Go (Chi); event-driven architecture
-                with Kafka and RabbitMQ; PostgreSQL, MongoDB, and Docker-based CI/CD.
-                Also skilled in frontend development with React, Next.js, and modern
-                UI tools, with a growing interest in machine learning and data science.
+                Experienced in backend development with Node.js (NestJS,
+                Express.js, and Fastify), Python (FastAPI), and Go (Chi);
+                event-driven architecture with Kafka and RabbitMQ; PostgreSQL,
+                MongoDB, and Docker-based CI/CD. Also skilled in frontend
+                development with React, Next.js, and modern UI tools, with a
+                growing interest in machine learning and data science.
               </p>
             </div>
 
@@ -598,20 +741,24 @@ export default function Portfolio() {
                 Work experience
               </h2>
               <span className="text-xs text-neutral-500 dark:text-neutral-400">
-                2+ years professional
+                3+ years professional
               </span>
             </div>
 
             <div className="space-y-5 sm:space-y-6">
               {experiences.map((exp, index) => (
-                <div key={index} className="space-y-2 border-b border-neutral-100 dark:border-neutral-800/60 pb-5 last:border-0 last:pb-0">
+                <div
+                  key={index}
+                  className="space-y-2 border-b border-neutral-100 dark:border-neutral-800/60 pb-5 last:border-0 last:pb-0"
+                >
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                     <div>
                       <h3 className="text-sm xs:text-base font-semibold text-neutral-900 dark:text-neutral-100">
                         {exp.role}
                       </h3>
                       <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
-                        {exp.company} • <span className="text-neutral-500">{exp.location}</span>
+                        {exp.company} •{" "}
+                        <span className="text-neutral-500">{exp.location}</span>
                       </p>
                     </div>
                     <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400 shrink-0">
@@ -646,14 +793,18 @@ export default function Portfolio() {
         </section>
 
         {/* PORTFOLIO / PROJECTS SECTION — Mobile Horizontal Tabs + Responsive Grid */}
-        <section id="projects" className="pt-6 sm:pt-8 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6">
+        <section
+          id="projects"
+          className="pt-6 sm:pt-8 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6"
+        >
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4">
             <div>
               <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
                 Featured projects
               </h2>
               <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1">
-                Fintech services, distributed microservices, web applications, and machine learning.
+                Fintech services, distributed microservices, web applications,
+                and machine learning.
               </p>
             </div>
 
@@ -782,13 +933,17 @@ export default function Portfolio() {
         </section>
 
         {/* SKILLS & TECHNOLOGIES SECTION */}
-        <section id="skills" className="pt-6 sm:pt-8 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6">
+        <section
+          id="skills"
+          className="pt-6 sm:pt-8 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6"
+        >
           <div>
             <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
               Skills & technologies
             </h2>
             <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1">
-              Core technologies, AI & workflow automations, distributed systems, and engineering practices from production experience.
+              Core technologies, AI & workflow automations, distributed systems,
+              and engineering practices from production experience.
             </p>
           </div>
 
@@ -817,7 +972,10 @@ export default function Portfolio() {
         </section>
 
         {/* EDUCATION & CERTIFICATIONS SECTION */}
-        <section id="education" className="pt-6 sm:pt-8 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6">
+        <section
+          id="education"
+          className="pt-6 sm:pt-8 border-t border-neutral-100 dark:border-neutral-800/80 space-y-6"
+        >
           <div>
             <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
               Education & certifications
@@ -843,7 +1001,8 @@ export default function Portfolio() {
               </span>
             </div>
             <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed pt-1">
-              Focused on software development, algorithms, data structures, and practical projects in fullstack, backend, and ML engineering.
+              Focused on software development, algorithms, data structures, and
+              practical projects in fullstack, backend, and ML engineering.
             </p>
           </div>
 
@@ -899,49 +1058,90 @@ export default function Portfolio() {
         </section>
 
         {/* CONTACT SECTION — Simple, Human, Inviting */}
-        <section id="contact" className="pt-6 sm:pt-8 border-t border-neutral-100 dark:border-neutral-800/80 space-y-5 sm:space-y-6">
+        <section
+          id="contact"
+          className="pt-6 sm:pt-8 border-t border-neutral-100 dark:border-neutral-800/80 space-y-5 sm:space-y-6"
+        >
           <div className="max-w-xl space-y-2">
             <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
               Let's connect
             </h2>
             <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              I am open to software engineering opportunities, fintech backends, and collaborative engineering projects. Feel free to reach out directly.
+              I am open to software engineering opportunities, fintech backends,
+              and collaborative engineering projects. Feel free to reach out
+              directly.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2 xs:gap-3">
-            <Button asChild size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-4">
+            <Button
+              asChild
+              size="default"
+              className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-4"
+            >
               <Link href="mailto:ermiasteklemarkos@gmail.com">
                 <Mail className="w-3.5 h-3.5 xs:w-4 xs:h-4 mr-1.5" />
                 Send an email
               </Link>
             </Button>
 
-            <Button asChild variant="outline" size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-3.5 xs:px-4">
-              <Link href="https://linkedin.com/in/ermias-tekilemarkos" target="_blank" rel="noopener noreferrer">
+            <Button
+              asChild
+              variant="outline"
+              size="default"
+              className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-3.5 xs:px-4"
+            >
+              <Link
+                href="https://linkedin.com/in/ermias-tekilemarkos"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Linkedin className="w-3.5 h-3.5 xs:w-4 xs:h-4 mr-1.5" />
                 LinkedIn
                 <ArrowUpRight className="w-3 h-3 xs:w-3.5 xs:h-3.5 ml-1" />
               </Link>
             </Button>
 
-            <Button asChild variant="outline" size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-3.5 xs:px-4">
-              <Link href="https://github.com/ermi-tekk21" target="_blank" rel="noopener noreferrer">
+            <Button
+              asChild
+              variant="outline"
+              size="default"
+              className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-3.5 xs:px-4"
+            >
+              <Link
+                href="https://github.com/ermi-tekk21"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Github className="w-3.5 h-3.5 xs:w-4 xs:h-4 mr-1.5" />
                 GitHub
                 <ArrowUpRight className="w-3 h-3 xs:w-3.5 xs:h-3.5 ml-1" />
               </Link>
             </Button>
 
-            <Button asChild variant="outline" size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-3.5 xs:px-4">
-              <Link href="https://t.me/Tek_jeremy_x03" target="_blank" rel="noopener noreferrer">
+            <Button
+              asChild
+              variant="outline"
+              size="default"
+              className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-3.5 xs:px-4"
+            >
+              <Link
+                href="https://t.me/Tek_jeremy_x03"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Send className="w-3.5 h-3.5 xs:w-4 xs:h-4 mr-1.5" />
                 Telegram
                 <ArrowUpRight className="w-3 h-3 xs:w-3.5 xs:h-3.5 ml-1" />
               </Link>
             </Button>
 
-            <Button asChild variant="outline" size="default" className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-3.5 xs:px-4">
+            <Button
+              asChild
+              variant="outline"
+              size="default"
+              className="rounded-full text-xs xs:text-sm h-9 xs:h-10 px-3.5 xs:px-4"
+            >
               <Link href={resumeUrl} target="_blank" rel="noopener noreferrer">
                 Resume
                 <ArrowUpRight className="w-3 h-3 xs:w-3.5 xs:h-3.5 ml-1" />
@@ -952,20 +1152,32 @@ export default function Portfolio() {
           {/* Direct Details Box */}
           <div className="p-3.5 xs:p-4 sm:p-5 rounded-2xl border border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/30 flex flex-col sm:flex-row sm:flex-wrap gap-y-2 gap-x-6 text-xs text-neutral-600 dark:text-neutral-400">
             <div className="break-all">
-              <span className="font-medium text-neutral-900 dark:text-neutral-100">Email: </span>
-              <a href="mailto:ermiasteklemarkos@gmail.com" className="hover:underline">ermiasteklemarkos@gmail.com</a>
+              <span className="font-medium text-neutral-900 dark:text-neutral-100">
+                Email:{" "}
+              </span>
+              <a
+                href="mailto:ermiasteklemarkos@gmail.com"
+                className="hover:underline"
+              >
+                ermiasteklemarkos@gmail.com
+              </a>
             </div>
             <div>
-              <span className="font-medium text-neutral-900 dark:text-neutral-100">Phone: </span>
-              <a href="tel:+251948309786" className="hover:underline">+251 948 309 786</a>
+              <span className="font-medium text-neutral-900 dark:text-neutral-100">
+                Phone:{" "}
+              </span>
+              <a href="tel:+251948309786" className="hover:underline">
+                +251 948 309 786
+              </a>
             </div>
             <div>
-              <span className="font-medium text-neutral-900 dark:text-neutral-100">Location: </span>
+              <span className="font-medium text-neutral-900 dark:text-neutral-100">
+                Location:{" "}
+              </span>
               <span>Addis Ababa, Ethiopia</span>
             </div>
           </div>
         </section>
-
       </div>
 
       {/* FLOATING BOTTOM DOCK — Perfectly Responsive for All Mobile Devices & Tablets */}
@@ -1042,9 +1254,11 @@ export default function Portfolio() {
           title={isPlaying ? "Pause music" : "Play subtle background music"}
           aria-label="Play or pause background music"
         >
-          <Music className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isPlaying ? "music-wiggle-active" : ""}`} />
+          <Music
+            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isPlaying ? "music-wiggle-active" : ""}`}
+          />
         </button>
       </nav>
     </div>
-  )
+  );
 }
