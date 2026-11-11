@@ -138,7 +138,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const resumeUrl = "https://drive.google.com/file/d/1l28kgiCx8k1LetniY2NJM--kxrkKPd0b/view?usp=sharing"
+  const resumeUrl = "https://drive.google.com/file/d/1gR7I6e7SwR5ZQR5XQh6_1-ScWUA6bCqM/view?usp=sharing"
 
   const jsonLd = {
     "@context": "https://schema.org",
